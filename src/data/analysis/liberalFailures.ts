@@ -406,6 +406,77 @@ export const liberalFailureData: AnalysisCategory[] = [
         source: 'Mental Health Commission of Canada, Canadian Mental Health Association'
       }
     ]
+  },
+  {
+    id: 'censorship',
+    title: 'Censorship & Free Speech Crisis',
+    description: 'Analysis of the Liberal government\'s attacks on freedom of speech and expression',
+    datasets: [
+      {
+        label: 'Online Censorship Bills Introduced',
+        data: [
+          { year: 2015, value: 0 },
+          { year: 2016, value: 0 },
+          { year: 2017, value: 0 },
+          { year: 2018, value: 1 },
+          { year: 2019, value: 1 },
+          { year: 2020, value: 2 },
+          { year: 2021, value: 3 },
+          { year: 2022, value: 4 },
+          { year: 2023, value: 5 }
+        ],
+        description: 'The Liberal government has introduced an increasing number of bills aimed at controlling online speech, including Bills C-10, C-11, and C-18.',
+        source: 'Parliament of Canada, Legislative Summaries'
+      },
+      {
+        label: 'Content Creators Affected by Bill C-11 (Thousands)',
+        data: [
+          { year: 2015, value: 0 },
+          { year: 2016, value: 0 },
+          { year: 2017, value: 0 },
+          { year: 2018, value: 0 },
+          { year: 2019, value: 0 },
+          { year: 2020, value: 0 },
+          { year: 2021, value: 0 },
+          { year: 2022, value: 0 },
+          { year: 2023, value: 90 }
+        ],
+        description: 'Bill C-11 subjects an estimated 90,000 Canadian content creators to CRTC regulation, threatening their ability to reach global audiences.',
+        source: 'Digital First Canada, YouTube Creator Economy Report'
+      },
+      {
+        label: 'Media Bailout Funding (Millions CAD)',
+        data: [
+          { year: 2015, value: 0 },
+          { year: 2016, value: 0 },
+          { year: 2017, value: 0 },
+          { year: 2018, value: 50 },
+          { year: 2019, value: 595 },
+          { year: 2020, value: 685 },
+          { year: 2021, value: 720 },
+          { year: 2022, value: 755 },
+          { year: 2023, value: 1200 }
+        ],
+        description: 'The Liberal government has spent over $4 billion on media bailouts, creating a dependency that compromises journalistic independence.',
+        source: 'Department of Finance Canada, Budget Documents'
+      },
+      {
+        label: 'Social Media Posts Flagged by Government (Thousands)',
+        data: [
+          { year: 2015, value: 0.2 },
+          { year: 2016, value: 0.5 },
+          { year: 2017, value: 1.2 },
+          { year: 2018, value: 3.6 },
+          { year: 2019, value: 8.4 },
+          { year: 2020, value: 15.7 },
+          { year: 2021, value: 22.3 },
+          { year: 2022, value: 31.8 },
+          { year: 2023, value: 42.5 }
+        ],
+        description: 'Government agencies have dramatically increased monitoring and flagging of social media content, with a 21,150% increase since 2015.',
+        source: 'Access to Information Requests, Heritage Canada and Public Safety Canada'
+      }
+    ]
   }
 ];
 
@@ -463,5 +534,13 @@ export const analysisInsights = {
     "The mental health funding gap has tripled to $3.6 billion despite Liberal campaign promises",
     "Canada spends only 7% of healthcare budgets on mental health, compared to 12% in comparable countries",
     "Veterans with PTSD and other mental health issues face excessive wait times for treatment"
+  ],
+  censorship: [
+    "The Liberal government has introduced 5 separate bills aimed at controlling online speech since 2018",
+    "Bill C-11 subjects 90,000 Canadian content creators to CRTC regulation, threatening their global reach",
+    "Over $4 billion in media bailouts has created a dependent press that rarely criticizes the government",
+    "Government flagging of social media posts has increased by over 21,000% since 2015",
+    "Bill C-18 led to news blocking by major platforms, reducing Canadians' access to information",
+    "The proposed Online Harms Act would create a digital safety commission with sweeping censorship powers"
   ]
 }; 

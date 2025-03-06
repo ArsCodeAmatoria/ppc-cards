@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
@@ -43,6 +43,9 @@ export default function AnalysisPage() {
   
   // Check if we're in the mental health category
   const isMentalHealthCategory = activeCategory === 'mentalhealth';
+  
+  // Check if we're in the censorship category
+  const isCensorshipCategory = activeCategory === 'censorship';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -254,6 +257,48 @@ export default function AnalysisPage() {
           </motion.div>
         )}
 
+        {/* Censorship Highlight (only shown for censorship category) */}
+        {isCensorshipCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-purple-900/50 to-orange-900/50 rounded-xl p-6 border border-orange-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-orange-500/20 p-3 rounded-full mt-1">
+                <Lock className="h-8 w-8 text-orange-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Freedom of Speech Under Attack</h3>
+                <p className="text-white/80 mb-4">
+                  The Liberal government has introduced 
+                  <span className="font-bold text-orange-400"> 5 separate bills</span> aimed at controlling online speech since 2018. 
+                  These censorship efforts threaten Canadians' fundamental right to free expression and undermine the open exchange of ideas.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-orange-400 mb-1">90K</p>
+                    <p className="text-white/70 text-sm">Content creators affected</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-orange-400 mb-1">$4B+</p>
+                    <p className="text-white/70 text-sm">Media bailout funding</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-orange-400 mb-1">+21,150%</p>
+                    <p className="text-white/70 text-sm">Increase in flagged posts</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  Bill C-11 subjects 90,000 Canadian content creators to CRTC regulation, threatening their global reach. 
+                  Meanwhile, over $4 billion in media bailouts has created a dependent press, and government flagging of 
+                  social media posts has increased by over 21,000% since 2015.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
           <div className="bg-white/10 rounded-lg p-1 inline-flex">
@@ -316,7 +361,9 @@ export default function AnalysisPage() {
                             ? 'border border-blue-500/30'
                             : isMentalHealthCategory
                               ? 'border border-green-500/30'
-                              : ''
+                              : isCensorshipCategory
+                                ? 'border border-orange-500/30'
+                                : ''
                     }`}
                   >
                     <DataChart dataset={dataset} type={chartType} />

@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain } from 'lucide-react';
+import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock } from 'lucide-react';
 import { categories } from '@/data/policies';
 import { PolicyCard } from '@/components/PolicyCard';
 
@@ -408,6 +408,94 @@ export default function Home() {
                     </div>
                     <div className="text-white/80 text-xs">
                       Source: Canadian Institute for Health Information, National Ambulatory Care Reporting System
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Censorship Section */}
+      <section className="w-full py-16 bg-gradient-to-r from-purple-800 to-orange-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/2">
+                <div className="flex items-center gap-2 mb-4">
+                  <Lock className="h-6 w-6 text-orange-400" />
+                  <h3 className="text-xl font-bold text-white">Freedom of Speech Under Attack</h3>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Liberal Censorship Agenda
+                </h2>
+                <p className="text-white/80 mb-6">
+                  The Liberal government has introduced 5 separate bills aimed at controlling online speech since 2018. 
+                  These censorship efforts threaten Canadians' fundamental right to free expression and undermine 
+                  the open exchange of ideas essential to democracy.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-orange-500/20 p-1 rounded-full mt-1">
+                      <span className="text-orange-400 font-bold">90K</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Content Creators Affected</h4>
+                      <p className="text-white/70 text-sm">By Bill C-11's CRTC regulations</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-orange-500/20 p-1 rounded-full mt-1">
+                      <span className="text-orange-400 font-bold">$4B+</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Media Bailout Funding</h4>
+                      <p className="text-white/70 text-sm">Creating a dependent press</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <Link 
+                  href="/analysis" 
+                  className="inline-flex items-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  View Full Analysis
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+              
+              <div className="md:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-[4/3] bg-gradient-to-br from-purple-700/50 to-orange-900/50 rounded-xl overflow-hidden p-4">
+                  <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                  <div className="h-full flex flex-col">
+                    <div className="bg-white/10 rounded-lg p-3 mb-3">
+                      <h4 className="text-white font-medium text-sm mb-1">Social Media Posts Flagged by Government (Thousands)</h4>
+                      <div className="h-40 relative">
+                        <div className="absolute bottom-0 left-0 w-[10%] h-[1%] bg-orange-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[12%] w-[10%] h-[2%] bg-orange-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[24%] w-[10%] h-[3%] bg-orange-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[36%] w-[10%] h-[8%] bg-orange-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[48%] w-[10%] h-[20%] bg-orange-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[60%] w-[10%] h-[37%] bg-orange-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[72%] w-[10%] h-[52%] bg-orange-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[84%] w-[10%] h-[75%] bg-orange-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[96%] w-[10%] h-[100%] bg-orange-400 rounded-t"></div>
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-white/60 text-xs">2015</span>
+                        <span className="text-white/60 text-xs">2023</span>
+                      </div>
+                    </div>
+                    <div className="text-white/80 text-xs">
+                      Source: Access to Information Requests, Heritage Canada and Public Safety Canada
                     </div>
                   </div>
                 </div>
