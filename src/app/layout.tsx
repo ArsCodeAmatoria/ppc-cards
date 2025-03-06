@@ -12,9 +12,38 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: "PPC Policy Recommendations",
-  description: "Learn about PPC policies and recommendations for Canada.",
+  description: "Learn about PPC policies and recommendations for Canada's future. Discover how Liberal failures have impacted Canadians and explore data-driven solutions.",
+  metadataBase: new URL('https://ppc-policy.ca'),
+  keywords: ["PPC", "People's Party of Canada", "Canadian politics", "Liberal failures", "policy recommendations", "Maxime Bernier"],
+  authors: [{ name: "People's Party of Canada" }],
+  creator: "People's Party of Canada",
+  publisher: "People's Party of Canada",
   icons: {
     icon: "/favicon-flame.svg",
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_CA",
+    url: "https://ppc-policy.ca",
+    title: "PPC Policy Recommendations",
+    description: "Explore PPC's data-driven analysis of Liberal failures and policy recommendations for a stronger Canada.",
+    siteName: "PPC Policy Recommendations",
+    images: [
+      {
+        url: "/images/ppc-social-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: "PPC Policy Recommendations",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PPC Policy Recommendations",
+    description: "Explore PPC's data-driven analysis of Liberal failures and policy recommendations for a stronger Canada.",
+    creator: "@peoplespca",
+    images: ["/images/ppc-social-card.jpg"],
   },
 };
 

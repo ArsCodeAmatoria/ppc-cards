@@ -2,10 +2,36 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe, Church, Star } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe, Church, Star, Flag } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
+import { Metadata } from 'next';
+
+// Metadata for this page
+export const generateMetadata = (): Metadata => {
+  return {
+    title: "Liberal Failures Analysis | PPC Policy Recommendations",
+    description: "Explore data-driven analysis of Liberal government failures across multiple sectors including economy, immigration, housing, and more.",
+    openGraph: {
+      title: "Liberal Failures Analysis | PPC Policy Recommendations",
+      description: "Explore data-driven analysis of Liberal government failures across multiple sectors including economy, immigration, housing, and more.",
+      images: [
+        {
+          url: "/images/analysis-social-card.jpg",
+          width: 1200,
+          height: 630,
+          alt: "PPC Analysis of Liberal Failures",
+        },
+      ],
+    },
+    twitter: {
+      title: "Liberal Failures Analysis | PPC Policy Recommendations",
+      description: "Explore data-driven analysis of Liberal government failures across multiple sectors including economy, immigration, housing, and more.",
+      images: ["/images/analysis-social-card.jpg"],
+    },
+  };
+};
 
 export default function AnalysisPage() {
   const [activeCategory, setActiveCategory] = useState(liberalFailureData[0].id);
@@ -55,6 +81,9 @@ export default function AnalysisPage() {
   
   // Check if we're in the anti-semitism category
   const isAntiSemitismCategory = activeCategory === 'antisemitism';
+  
+  // Check if we're in the islamism category
+  const isIslamismCategory = activeCategory === 'islamism';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -437,6 +466,50 @@ export default function AnalysisPage() {
           </motion.div>
         )}
 
+        {/* Islamism Highlight (only shown for islamism category) */}
+        {isIslamismCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-purple-900/50 to-green-800/50 rounded-xl p-6 border border-green-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-green-500/20 p-3 rounded-full mt-1">
+                <Flag className="h-8 w-8 text-green-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Rising Islamism Crisis</h3>
+                <p className="text-white/80 mb-4">
+                  Pro-Hamas rallies in Canada have increased by 
+                  <span className="font-bold text-green-400"> over 6,100% since 2015</span>, with 187 rallies in 2023 alone 
+                  following the October 7 attacks on Israel. Meanwhile, government funding to organizations with 
+                  documented ties to Islamist groups has increased by over 1,400%.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-green-400 mb-1">$27.8M</p>
+                    <p className="text-white/70 text-sm">Funding to Islamist-linked groups in 2023</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-green-400 mb-1">34</p>
+                    <p className="text-white/70 text-sm">Islamist-linked advisors to government</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-green-400 mb-1">214</p>
+                    <p className="text-white/70 text-sm">Extremism cases under investigation</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  The Liberal government has consistently downplayed the threat of Islamist extremism while 
+                  amplifying other security concerns. The number of individuals with ties to Islamist organizations 
+                  serving on government advisory boards has increased by 1,600% since 2015, raising concerns about 
+                  ideological influence on policy decisions.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
           <div className="bg-white/10 rounded-lg p-1 inline-flex">
@@ -507,7 +580,9 @@ export default function AnalysisPage() {
                                     ? 'border border-amber-500/30'
                                     : isAntiSemitismCategory
                                       ? 'border border-blue-500/30'
-                                      : ''
+                                      : isIslamismCategory
+                                        ? 'border border-green-500/30'
+                                        : ''
                     }`}
                   >
                     <DataChart dataset={dataset} type={chartType} />

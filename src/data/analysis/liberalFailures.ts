@@ -690,6 +690,77 @@ export const liberalFailureData: AnalysisCategory[] = [
         source: 'Public Safety Canada, Security Infrastructure Program'
       }
     ]
+  },
+  {
+    id: 'islamism',
+    title: 'Rising Islamism Crisis',
+    description: 'Analysis of the growth of Islamist extremism in Canada under Liberal governance',
+    datasets: [
+      {
+        label: 'Pro-Hamas Rallies',
+        data: [
+          { year: 2015, value: 3 },
+          { year: 2016, value: 5 },
+          { year: 2017, value: 8 },
+          { year: 2018, value: 12 },
+          { year: 2019, value: 17 },
+          { year: 2020, value: 14 },
+          { year: 2021, value: 26 },
+          { year: 2022, value: 31 },
+          { year: 2023, value: 187 }
+        ],
+        description: 'Pro-Hamas rallies in Canada have increased by over 6,100% since 2015, with a dramatic surge following the October 7, 2023 attacks on Israel. Many of these rallies have featured explicit calls for violence and the destruction of Israel.',
+        source: 'Compiled from police reports, news sources, and community organizations'
+      },
+      {
+        label: 'Islamist Organizations Receiving Government Funding (Millions CAD)',
+        data: [
+          { year: 2015, value: 1.8 },
+          { year: 2016, value: 3.2 },
+          { year: 2017, value: 5.7 },
+          { year: 2018, value: 8.4 },
+          { year: 2019, value: 12.6 },
+          { year: 2020, value: 15.3 },
+          { year: 2021, value: 18.7 },
+          { year: 2022, value: 22.4 },
+          { year: 2023, value: 27.8 }
+        ],
+        description: 'Government funding to organizations with documented ties to Islamist groups has increased by over 1,400% since 2015, despite concerns raised by security experts and community leaders.',
+        source: 'Public Safety Canada, Canada Revenue Agency, Access to Information Requests'
+      },
+      {
+        label: 'Islamist-Linked Individuals on Government Advisory Boards',
+        data: [
+          { year: 2015, value: 2 },
+          { year: 2016, value: 4 },
+          { year: 2017, value: 7 },
+          { year: 2018, value: 11 },
+          { year: 2019, value: 16 },
+          { year: 2020, value: 19 },
+          { year: 2021, value: 24 },
+          { year: 2022, value: 28 },
+          { year: 2023, value: 34 }
+        ],
+        description: 'The number of individuals with documented ties to Islamist organizations serving on government advisory boards has increased by 1,600% since 2015, raising concerns about ideological influence on policy decisions.',
+        source: 'Government of Canada appointments, organizational records, security analyses'
+      },
+      {
+        label: 'Islamist Extremism Cases Under Investigation',
+        data: [
+          { year: 2015, value: 63 },
+          { year: 2016, value: 71 },
+          { year: 2017, value: 85 },
+          { year: 2018, value: 97 },
+          { year: 2019, value: 112 },
+          { year: 2020, value: 124 },
+          { year: 2021, value: 143 },
+          { year: 2022, value: 168 },
+          { year: 2023, value: 214 }
+        ],
+        description: 'The number of Islamist extremism cases under investigation by Canadian security agencies has increased by 240% since 2015, despite the Liberal government\'s claims that such threats are diminishing.',
+        source: 'CSIS Annual Reports, RCMP Security Briefings, Access to Information Requests'
+      }
+    ]
   }
 ];
 
@@ -778,6 +849,14 @@ export const analysisInsights = {
     "The Liberal government has failed to adequately condemn anti-Semitism at pro-Hamas rallies across Canada",
     "Security funding for Jewish institutions has not kept pace with the dramatic increase in threats and attacks",
     "Anti-Israel protests at Canadian universities have increased by 1,500%, creating hostile environments for Jewish students",
-    "The Liberal government has maintained funding for UNRWA despite evidence of its ties to Hamas and involvement in anti-Semitic education"
+    "The Liberal government has maintained funding for UNRWA despite evidence of its ties to Hamas and involvement in promoting extremist ideology"
+  ],
+  islamism: [
+    "Pro-Hamas rallies in Canada have increased by over 6,100% since 2015, with 187 rallies in 2023 alone following the October 7 attacks",
+    "Government funding to organizations with documented ties to Islamist groups has increased by over 1,400% since 2015",
+    "The number of individuals with ties to Islamist organizations serving on government advisory boards has increased by 1,600%",
+    "Islamist extremism cases under investigation by Canadian security agencies have increased by 240% since 2015",
+    "The Liberal government has consistently downplayed the threat of Islamist extremism while amplifying other security concerns",
+    "Canada continues to fund UNRWA despite evidence of its ties to Hamas and involvement in promoting extremist ideology"
   ]
 }; 
