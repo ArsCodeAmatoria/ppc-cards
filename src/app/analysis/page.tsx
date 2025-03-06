@@ -1,12 +1,10 @@
-'use client';
-
 import React, { useState } from 'react';
+import { Metadata } from 'next';
 import { motion } from 'framer-motion';
 import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe, Church, Star, Flag } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
-import { Metadata } from 'next';
 
 // Metadata for this page
 export const generateMetadata = (): Metadata => {
@@ -32,6 +30,8 @@ export const generateMetadata = (): Metadata => {
     },
   };
 };
+
+'use client';
 
 export default function AnalysisPage() {
   const [activeCategory, setActiveCategory] = useState(liberalFailureData[0].id);

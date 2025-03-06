@@ -1,13 +1,11 @@
-'use client';
-
 import React from 'react';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock, Globe, Church, Star, Flag } from 'lucide-react';
 import { categories } from '@/data/policies';
 import { PolicyCard } from '@/components/PolicyCard';
-import { Metadata } from 'next';
 
 // Metadata for this page
 export const generateMetadata = (): Metadata => {
@@ -33,6 +31,8 @@ export const generateMetadata = (): Metadata => {
     },
   };
 };
+
+'use client';
 
 export default function Home() {
   // Animation variants
