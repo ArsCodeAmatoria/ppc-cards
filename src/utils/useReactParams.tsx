@@ -27,6 +27,9 @@
  *   // ...rest of component
  * }
  * ```
+ * 
+ * NOTE: To properly handle the Suspense behavior of React.use(),
+ * make sure to wrap components using this function in a Suspense boundary.
  */
 
 // Import use hook from React
@@ -40,16 +43,10 @@ const use = (React as any).use;
  * Must be used within a component wrapped in Suspense
  */
 export function useReactParams<T>(params: Promise<T> | T): T {
-  try {
-    // If params is already a Promise, unwrap it with use()
-    if (params instanceof Promise) {
-      return use(params);
-    }
-    // Otherwise just return it directly
-    return params;
-  } catch (error) {
-    // Fallback for handling errors or non-Promise params
-    console.warn('Error unwrapping params with React.use():', error);
-    return params as T;
+  // If params is already a Promise, unwrap it with use()
+  if (params instanceof Promise) {
+    return use(params);
   }
+  // Otherwise just return it directly
+  return params;
 } 
