@@ -50,16 +50,29 @@ src/
 └── types/                # TypeScript type definitions
 ```
 
-## Route Parameter Handling
+## Route Parameter Handling in Next.js 15+
 
-This project includes a centralized utility for handling Next.js route parameters (`src/utils/useReactParams.tsx`). As of recent Next.js versions, route params are moving towards being Promise objects that need to be unwrapped with `React.use()`.
+In Next.js 15+, route parameters (`params`) are now Promise objects that should be unwrapped with `React.use()` before accessing their properties. This project includes a centralized utility for handling this change.
 
-Our solution:
-1. All components use the `useReactParams` utility to handle params consistently
-2. When Next.js requires `React.use()` in the future, we'll only need to update this one utility
-3. This prevents console warnings while providing a future-proof solution
+### Current Behavior
 
-Example usage:
+Currently, you'll see console warnings like:
+```
+A param property was accessed directly with `params.id`. `params` is now a Promise and should be unwrapped with `React.use()` before accessing properties of the underlying params object.
+```
+
+These warnings are informational and don't affect functionality in the current version of Next.js.
+
+### Our Solution
+
+1. **Centralized Utility**: We use `useReactParams` in `src/utils/useReactParams.tsx` to handle params consistently across components.
+
+2. **Current Implementation**: The utility currently returns params directly (with warnings).
+
+3. **Future-Proofing**: When Next.js makes `React.use()` mandatory, we'll only need to update this one utility.
+
+### Usage Example
+
 ```tsx
 import { useReactParams } from '@/utils/useReactParams';
 
@@ -75,6 +88,37 @@ export default function Page({ params }: PageProps) {
   const { id } = unwrappedParams;
   
   // Rest of component...
+}
+```
+
+### Future Implementation (When React.use() Becomes Required)
+
+When Next.js requires `React.use()`, you'll need to:
+
+1. Wrap your components in Suspense boundaries:
+```tsx
+import { Suspense } from 'react';
+
+export default function Page({ params }) {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PageContent params={params} />
+    </Suspense>
+  );
+}
+
+function PageContent({ params }) {
+  const unwrappedParams = useReactParams(params);
+  // ...rest of your component
+}
+```
+
+2. Update the `useReactParams` utility to use `React.use()`:
+```tsx
+import { use } from 'react';
+
+export function useReactParams<T>(params: T): T {
+  return use(params as any);
 }
 ```
 

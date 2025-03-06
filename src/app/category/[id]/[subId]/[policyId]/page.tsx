@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { notFound } from 'next/navigation';
-import React from 'react';
 import { useReactParams } from '@/utils/useReactParams';
+import React from 'react';
 
 interface PolicyPageProps {
   params: {
@@ -16,9 +16,9 @@ interface PolicyPageProps {
   };
 }
 
+// Main page component
 export default function PolicyPage({ params }: PolicyPageProps) {
   // Use our centralized utility for handling Next.js params
-  // This will make it easy to update when React.use() becomes required
   const unwrappedParams = useReactParams(params);
   const { id, subId, policyId } = unwrappedParams;
   
