@@ -4,10 +4,11 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import * as icons from 'lucide-react';
 
+// Note: 'key' is a special React prop and should not be included in component props
 interface PolicyCardProps {
   title: string;
   description: string;
-  icon?: string;
+  icon?: string; // Make icon optional
   href: string;
 }
 

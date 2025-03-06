@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import React from 'react';
+import { useReactParams } from '@/utils/useReactParams';
 
 interface SubCategoryPageProps {
   params: {
@@ -30,16 +31,11 @@ const itemVariants = {
   show: { opacity: 1, y: 0 }
 };
 
-function getParams(params: any) {
-  // This will be implemented correctly in future Next.js versions
-  // Current approach is using direct access per Next.js warnings
-  return params;
-}
-
 export default function SubCategoryPage({ params }: SubCategoryPageProps) {
-  // Get params safely for current and future Next.js
-  const safeParams = getParams(params);
-  const { id, subId } = safeParams;
+  // Use our centralized utility for handling Next.js params
+  // This will make it easy to update when React.use() becomes required
+  const unwrappedParams = useReactParams(params);
+  const { id, subId } = unwrappedParams;
   
   const category = categories.find((c) => c.id === id);
   const subcategory = category?.subcategories.find((s) => s.id === subId);

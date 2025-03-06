@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import React from 'react';
+import { useReactParams } from '@/utils/useReactParams';
 
 interface PolicyPageProps {
   params: {
@@ -15,17 +16,11 @@ interface PolicyPageProps {
   };
 }
 
-// Handle params correctly for both current and future Next.js versions
-function getParams(params: any) {
-  // This will be implemented correctly in future Next.js versions
-  // Current approach is using direct access per Next.js warnings
-  return params;
-}
-
 export default function PolicyPage({ params }: PolicyPageProps) {
-  // Get params safely for current and future Next.js
-  const safeParams = getParams(params);
-  const { id, subId, policyId } = safeParams;
+  // Use our centralized utility for handling Next.js params
+  // This will make it easy to update when React.use() becomes required
+  const unwrappedParams = useReactParams(params);
+  const { id, subId, policyId } = unwrappedParams;
   
   const category = categories.find((c) => c.id === id);
   const subcategory = category?.subcategories.find((s) => s.id === subId);
