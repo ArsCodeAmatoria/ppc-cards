@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
@@ -46,6 +46,9 @@ export default function AnalysisPage() {
   
   // Check if we're in the censorship category
   const isCensorshipCategory = activeCategory === 'censorship';
+  
+  // Check if we're in the illegal immigration category
+  const isIllegalImmigrationCategory = activeCategory === 'illegalimmigration';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -299,6 +302,48 @@ export default function AnalysisPage() {
           </motion.div>
         )}
 
+        {/* Illegal Immigration Highlight (only shown for illegal immigration category) */}
+        {isIllegalImmigrationCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-purple-900/50 to-red-800/50 rounded-xl p-6 border border-red-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-red-500/20 p-3 rounded-full mt-1">
+                <Globe className="h-8 w-8 text-red-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Border Security Crisis</h3>
+                <p className="text-white/80 mb-4">
+                  The Liberal government's failure to secure Canada's borders has resulted in 
+                  <span className="font-bold text-red-400"> over 138,000 illegal crossings</span> at Roxham Road alone since 2017. 
+                  This policy failure has overwhelmed our immigration system and cost taxpayers billions.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-red-400 mb-1">182.6K</p>
+                    <p className="text-white/70 text-sm">Asylum claim backlog</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-red-400 mb-1">96.7K</p>
+                    <p className="text-white/70 text-sm">Unexecuted deportation orders</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-red-400 mb-1">$2.7B</p>
+                    <p className="text-white/70 text-sm">Annual cost to taxpayers</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  The asylum claim backlog has increased by over 960% since 2015, while the number of individuals 
+                  ordered deported but still in Canada has more than doubled. The annual cost to Canadian taxpayers 
+                  has increased by over 1,200% to $2.7 billion per year.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
           <div className="bg-white/10 rounded-lg p-1 inline-flex">
@@ -363,7 +408,9 @@ export default function AnalysisPage() {
                               ? 'border border-green-500/30'
                               : isCensorshipCategory
                                 ? 'border border-orange-500/30'
-                                : ''
+                                : isIllegalImmigrationCategory
+                                  ? 'border border-red-500/30'
+                                  : ''
                     }`}
                   >
                     <DataChart dataset={dataset} type={chartType} />

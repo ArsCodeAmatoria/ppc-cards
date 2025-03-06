@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock } from 'lucide-react';
+import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock, Globe } from 'lucide-react';
 import { categories } from '@/data/policies';
 import { PolicyCard } from '@/components/PolicyCard';
 
@@ -496,6 +496,94 @@ export default function Home() {
                     </div>
                     <div className="text-white/80 text-xs">
                       Source: Access to Information Requests, Heritage Canada and Public Safety Canada
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Illegal Immigration Section */}
+      <section className="w-full py-16 bg-gradient-to-r from-purple-800 to-red-800">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/2">
+                <div className="flex items-center gap-2 mb-4">
+                  <Globe className="h-6 w-6 text-red-400" />
+                  <h3 className="text-xl font-bold text-white">Border Security Crisis</h3>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Illegal Immigration Failure
+                </h2>
+                <p className="text-white/80 mb-6">
+                  The Liberal government's failure to secure Canada's borders has resulted in over 138,000 illegal 
+                  crossings at Roxham Road alone since 2017, overwhelming our immigration system and costing 
+                  taxpayers billions of dollars.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-red-500/20 p-1 rounded-full mt-1">
+                      <span className="text-red-400 font-bold">960%</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Asylum Backlog Increase</h4>
+                      <p className="text-white/70 text-sm">Since 2015 under Liberal governance</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-red-500/20 p-1 rounded-full mt-1">
+                      <span className="text-red-400 font-bold">$2.7B</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Annual Cost</h4>
+                      <p className="text-white/70 text-sm">To Canadian taxpayers in 2023</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <Link 
+                  href="/analysis" 
+                  className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  View Full Analysis
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+              
+              <div className="md:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-[4/3] bg-gradient-to-br from-purple-700/50 to-red-800/50 rounded-xl overflow-hidden p-4">
+                  <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                  <div className="h-full flex flex-col">
+                    <div className="bg-white/10 rounded-lg p-3 mb-3">
+                      <h4 className="text-white font-medium text-sm mb-1">Roxham Road Illegal Crossings (Thousands)</h4>
+                      <div className="h-40 relative">
+                        <div className="absolute bottom-0 left-0 w-[10%] h-[5%] bg-red-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[12%] w-[10%] h-[14%] bg-red-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[24%] w-[10%] h-[47%] bg-red-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[36%] w-[10%] h-[49%] bg-red-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[48%] w-[10%] h-[40%] bg-red-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[60%] w-[10%] h-[9%] bg-red-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[72%] w-[10%] h-[21%] bg-red-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[84%] w-[10%] h-[100%] bg-red-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[96%] w-[10%] h-[61%] bg-red-400 rounded-t"></div>
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-white/60 text-xs">2015</span>
+                        <span className="text-white/60 text-xs">2023</span>
+                      </div>
+                    </div>
+                    <div className="text-white/80 text-xs">
+                      Source: Immigration, Refugees and Citizenship Canada, Canada Border Services Agency
                     </div>
                   </div>
                 </div>

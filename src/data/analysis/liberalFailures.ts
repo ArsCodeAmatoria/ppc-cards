@@ -477,6 +477,77 @@ export const liberalFailureData: AnalysisCategory[] = [
         source: 'Access to Information Requests, Heritage Canada and Public Safety Canada'
       }
     ]
+  },
+  {
+    id: 'illegalimmigration',
+    title: 'Illegal Immigration Crisis',
+    description: 'Analysis of the Liberal government\'s failure to secure borders and manage illegal immigration',
+    datasets: [
+      {
+        label: 'Roxham Road Crossings (Thousands)',
+        data: [
+          { year: 2015, value: 2.1 },
+          { year: 2016, value: 5.7 },
+          { year: 2017, value: 18.8 },
+          { year: 2018, value: 19.4 },
+          { year: 2019, value: 16.1 },
+          { year: 2020, value: 3.5 },
+          { year: 2021, value: 8.2 },
+          { year: 2022, value: 39.7 },
+          { year: 2023, value: 24.3 }
+        ],
+        description: 'Illegal border crossings at Roxham Road increased by over 1,000% under Liberal governance before the crossing was finally closed in March 2023 after years of inaction.',
+        source: 'Immigration, Refugees and Citizenship Canada, Canada Border Services Agency'
+      },
+      {
+        label: 'Asylum Claim Backlog (Thousands)',
+        data: [
+          { year: 2015, value: 17.2 },
+          { year: 2016, value: 21.5 },
+          { year: 2017, value: 43.8 },
+          { year: 2018, value: 71.6 },
+          { year: 2019, value: 87.3 },
+          { year: 2020, value: 85.4 },
+          { year: 2021, value: 104.2 },
+          { year: 2022, value: 138.1 },
+          { year: 2023, value: 182.6 }
+        ],
+        description: 'The backlog of asylum claims has increased by over 960% since 2015, overwhelming the immigration system and leaving legitimate refugees waiting years for processing.',
+        source: 'Immigration and Refugee Board of Canada'
+      },
+      {
+        label: 'Deportation Orders Not Executed (Thousands)',
+        data: [
+          { year: 2015, value: 45.8 },
+          { year: 2016, value: 52.4 },
+          { year: 2017, value: 58.1 },
+          { year: 2018, value: 63.7 },
+          { year: 2019, value: 68.2 },
+          { year: 2020, value: 72.1 },
+          { year: 2021, value: 78.6 },
+          { year: 2022, value: 83.4 },
+          { year: 2023, value: 96.7 }
+        ],
+        description: 'The number of unexecuted deportation orders has more than doubled since 2015, with over 96,000 individuals remaining in Canada despite being ordered to leave.',
+        source: 'Canada Border Services Agency, Access to Information Requests'
+      },
+      {
+        label: 'Cost of Illegal Immigration (Millions CAD)',
+        data: [
+          { year: 2015, value: 210 },
+          { year: 2016, value: 384 },
+          { year: 2017, value: 742 },
+          { year: 2018, value: 1156 },
+          { year: 2019, value: 1428 },
+          { year: 2020, value: 1215 },
+          { year: 2021, value: 1587 },
+          { year: 2022, value: 2143 },
+          { year: 2023, value: 2685 }
+        ],
+        description: 'The annual cost of managing illegal immigration has increased by over 1,200% since 2015, with Canadian taxpayers now paying over $2.6 billion per year.',
+        source: 'Parliamentary Budget Office, Department of Finance Canada'
+      }
+    ]
   }
 ];
 
@@ -542,5 +613,13 @@ export const analysisInsights = {
     "Government flagging of social media posts has increased by over 21,000% since 2015",
     "Bill C-18 led to news blocking by major platforms, reducing Canadians' access to information",
     "The proposed Online Harms Act would create a digital safety commission with sweeping censorship powers"
+  ],
+  illegalimmigration: [
+    "Illegal border crossings at Roxham Road increased by over 1,000% before the crossing was finally closed in March 2023",
+    "The backlog of asylum claims has increased by over 960% since 2015, overwhelming the immigration system",
+    "Over 96,000 individuals ordered deported remain in Canada due to the government's failure to enforce deportation orders",
+    "Canadian taxpayers now pay over $2.6 billion annually to manage illegal immigration, a 1,200% increase since 2015",
+    "Hotel housing for illegal migrants has cost over $500 million, with some hotels being used for over 3 years",
+    "Border security resources have been reduced while illegal crossings have increased dramatically"
   ]
 }; 
