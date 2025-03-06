@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import { SearchBar } from '@/components/search/SearchBar';
 import { CompareFloatingButton } from '@/components/CompareFloatingButton';
+import { BarChart2 } from 'lucide-react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -37,9 +38,34 @@ export default function RootLayout({
                 className="h-10 w-auto"
               />
             </Link>
+            
+            {/* Main Navigation */}
+            <nav className="hidden md:flex items-center space-x-6">
+              <Link href="/" className="text-white/80 hover:text-white transition-colors">
+                Home
+              </Link>
+              <Link href="/analysis" className="flex items-center text-white/80 hover:text-white transition-colors">
+                <BarChart2 className="h-4 w-4 mr-1" />
+                Liberal Failures Analysis
+              </Link>
+            </nav>
+            
             <div className="w-full md:w-auto md:max-w-md">
               <SearchBar />
             </div>
+          </div>
+          
+          {/* Mobile Navigation */}
+          <div className="md:hidden container mx-auto px-4 mt-4">
+            <nav className="flex items-center justify-center space-x-6">
+              <Link href="/" className="text-white/80 hover:text-white transition-colors">
+                Home
+              </Link>
+              <Link href="/analysis" className="flex items-center text-white/80 hover:text-white transition-colors">
+                <BarChart2 className="h-4 w-4 mr-1" />
+                Analysis
+              </Link>
+            </nav>
           </div>
         </header>
 

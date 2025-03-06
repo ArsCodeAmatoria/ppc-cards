@@ -13,6 +13,7 @@ This project is a demonstration website that presents policy information in an o
 - Modern UI with consistent styling
 - **Policy search functionality**
 - **Policy comparison tool**
+- **Data analysis of Liberal government failures**
 
 ## Tech Stack
 
@@ -31,6 +32,8 @@ ppc-cards/
 │       └── ppc-banner.png
 ├── src/
 │   ├── app/
+│   │   ├── analysis/
+│   │   │   └── page.tsx              # Data analysis page
 │   │   ├── category/
 │   │   │   ├── [id]/
 │   │   │   │   ├── [subId]/
@@ -46,12 +49,17 @@ ppc-cards/
 │   │   ├── layout.tsx                # Root layout
 │   │   └── page.tsx                  # Home page
 │   ├── components/
+│   │   ├── analysis/
+│   │   │   ├── DataChart.tsx         # Chart component for data visualization
+│   │   │   └── InsightsList.tsx      # Component to display data insights
 │   │   ├── search/
 │   │   │   └── SearchBar.tsx         # Search input component
 │   │   ├── CompareButton.tsx         # Button to add policies to comparison
 │   │   ├── CompareFloatingButton.tsx # Floating button for comparison access
 │   │   └── PolicyCard.tsx            # Reusable policy card component
 │   └── data/
+│       ├── analysis/
+│       │   └── liberalFailures.ts    # Data for Liberal government failures analysis
 │       └── policies.ts               # Centralized data store
 ├── next.config.js                    # Next.js configuration
 ├── package.json                      # Dependencies and scripts
@@ -353,6 +361,59 @@ export function CompareButton({ policyId, categoryId, subcategoryId, title }: Co
   );
 }
 ```
+
+### Data Analysis
+
+The application includes a comprehensive data analysis section that visualizes Liberal government failures:
+
+```tsx
+// src/components/analysis/DataChart.tsx
+export function DataChart({ dataset, type = 'line', className = '' }: DataChartProps) {
+  // Sort data by year
+  const sortedData = [...dataset.data].sort((a, b) => a.year - b.year);
+  
+  // Extract years and values
+  const years = sortedData.map(point => point.year.toString());
+  const values = sortedData.map(point => point.value);
+  
+  // Prepare chart data
+  const chartData = {
+    labels: years,
+    datasets: [
+      {
+        label: dataset.label,
+        data: values,
+        borderColor: 'rgb(147, 51, 234)', // Purple
+        backgroundColor: 'rgba(147, 51, 234, 0.5)',
+        borderWidth: 2,
+        // Additional styling properties...
+      },
+    ],
+  };
+  
+  return (
+    <div className={`w-full h-80 ${className}`}>
+      {type === 'line' ? (
+        <Line data={chartData} options={options} />
+      ) : (
+        <Bar data={chartData} options={options} />
+      )}
+      <div className="mt-4">
+        <p className="text-white/80 text-sm">{dataset.description}</p>
+        <p className="text-white/60 text-xs mt-1">Source: {dataset.source}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+The data analysis feature includes:
+
+- Interactive charts showing trends in economic indicators, immigration statistics, healthcare metrics, and crime rates
+- Toggle between line and bar chart visualizations
+- Key insights for each category of data
+- Methodology information explaining data sources
+- Mobile-responsive design for all chart components
 
 ## Getting Started
 
