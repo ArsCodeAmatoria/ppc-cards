@@ -109,6 +109,51 @@ export const categories: Category[] = [
         ]
       },
       {
+        id: 'indigenous-policy',
+        title: 'Indigenous Policy',
+        description: 'Evidence-based approach to Indigenous issues',
+        policies: [
+          {
+            id: 'truth-reconciliation',
+            title: 'Truth in Reconciliation',
+            description: 'Ensuring factual accuracy in discussions of Indigenous issues',
+            icon: 'FileSearch',
+            content: [
+              'Many claims about residential schools have been exaggerated or misrepresented',
+              'Ground-penetrating radar findings were misreported as "mass graves"',
+              'Subsequent excavations have found no human remains in many alleged grave sites',
+              'Public policy should be based on verified facts, not unsubstantiated claims'
+            ],
+            details: {
+              keyPoints: [
+                'Establish an independent commission to verify claims about residential schools',
+                'Require evidence-based reporting on Indigenous issues',
+                'Ensure that reconciliation efforts are based on documented facts',
+                'Promote honest dialogue about Canada\'s history with Indigenous peoples'
+              ],
+              sections: [
+                {
+                  title: 'The Unmarked Graves Controversy',
+                  content: 'In 2021, claims of discovering "mass graves" at former residential schools made international headlines. Ground-penetrating radar identified soil disturbances that were immediately characterized as containing the remains of hundreds of children. However, subsequent excavations at multiple sites have failed to uncover any human remains. Despite this, the government continues to allocate millions of dollars based on these unverified claims.'
+                },
+                {
+                  title: 'Media Misrepresentation',
+                  content: 'The media widely reported these findings as confirmed graves without waiting for excavation or forensic evidence. This led to church burnings and vandalism across Canada. When excavations found no bodies, these findings received minimal coverage, allowing the original narrative to persist in public consciousness despite being contradicted by the evidence.'
+                },
+                {
+                  title: 'Policy Proposal',
+                  content: 'A PPC government would establish an independent historical commission to investigate claims about residential schools and other Indigenous issues, ensuring that public policy is based on verified historical facts rather than politically motivated narratives. This commission would include Indigenous and non-Indigenous historians, archaeologists, and other relevant experts.'
+                },
+                {
+                  title: 'Benefits',
+                  content: 'This approach would ensure that reconciliation efforts are based on truth and that public resources are allocated based on verified needs rather than sensationalized claims. It would also help heal divisions by establishing a common understanding of historical facts that all Canadians can acknowledge, regardless of political affiliation.'
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
         id: 'immigration',
         title: 'Immigration Reform',
         description: 'A principled approach to immigration that puts Canadians first',
