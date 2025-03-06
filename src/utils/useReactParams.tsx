@@ -1,30 +1,28 @@
 /**
  * This is a centralized utility for handling Next.js route params.
  * 
- * WARNING: Next.js has announced that in future versions, params will be
- * a Promise that must be unwrapped with React.use().
+ * In newer versions of Next.js, params is a Promise object that should be
+ * unwrapped with `React.use()` before accessing properties. This utility
+ * provides a centralized place to handle this change.
  * 
- * When Next.js makes this change, we'll need to update this utility to use:
- * ```
- * import { use } from 'react';
- * export function useReactParams<T>(params: T): T {
- *   return use(params);
- * }
- * ```
- * 
- * For now, direct access works with just a warning, so we return params directly.
+ * When Next.js requires React.use() in the future, you'll simply need to
+ * uncomment the future implementation below and comment out the current one.
  */
 
-// Current implementation for Next.js development with warning
+// CURRENT IMPLEMENTATION
+// This works with the current version of Next.js but shows warnings
 export function useReactParams<T>(params: T): T {
+  // Direct access still works but with warnings
   return params;
 }
 
-// Future implementation when React.use becomes required
-// Uncomment this when Next.js makes the change:
+// FUTURE IMPLEMENTATION
+// Uncomment this when Next.js makes React.use() required:
 /*
-import { use } from 'react';
+import { use } from 'react'; // You might need to change this to a proper import path
+
 export function useReactParams<T>(params: T): T {
-  return use(params);
+  // Unwrap params using React.use() to avoid warnings
+  return use(params as any);
 }
 */ 

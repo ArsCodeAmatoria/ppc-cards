@@ -20,6 +20,11 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <main className="container mx-auto px-4 py-8">
+          {/* 
+            Note: Ideally, we would wrap children in a Suspense boundary to help with React.use(),
+            but it's better to add Suspense boundaries in each page component instead of the root layout
+            to avoid any import issues with server components.
+          */}
           {children}
         </main>
       </body>

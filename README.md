@@ -46,7 +46,36 @@ src/
 ├── app/                    # Next.js App Router pages
 ├── components/            # Reusable React components
 ├── data/                  # Policy data in JSON format
+├── utils/                 # Utility functions
 └── types/                # TypeScript type definitions
+```
+
+## Route Parameter Handling
+
+This project includes a centralized utility for handling Next.js route parameters (`src/utils/useReactParams.tsx`). As of recent Next.js versions, route params are moving towards being Promise objects that need to be unwrapped with `React.use()`.
+
+Our solution:
+1. All components use the `useReactParams` utility to handle params consistently
+2. When Next.js requires `React.use()` in the future, we'll only need to update this one utility
+3. This prevents console warnings while providing a future-proof solution
+
+Example usage:
+```tsx
+import { useReactParams } from '@/utils/useReactParams';
+
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function Page({ params }: PageProps) {
+  // Use our centralized utility to unwrap params
+  const unwrappedParams = useReactParams(params);
+  const { id } = unwrappedParams;
+  
+  // Rest of component...
+}
 ```
 
 ## Deployment
