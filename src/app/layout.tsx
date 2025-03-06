@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "PPC Policy Explorer",
   description: "Explore PPC policies in an interactive, card-based format",
   icons: {
-    icon: '/favicon-new.svg',
+    icon: '/favicon-flame.svg',
   },
 };
 
@@ -24,13 +24,13 @@ export default function RootLayout({
         <link rel="stylesheet" href="/styles.css" />
         <meta name="theme-color" content="#442d7b" />
       </head>
-      <body className={`${inter.className} min-h-screen`}>
+      <body className={`${inter.className} min-h-screen bg-slate-900`}>
         <header className="py-4 border-b border-white/10 bg-white/5 backdrop-blur-sm">
           <div className="container mx-auto px-4 flex justify-between items-center">
             <Link href="/" className="flex items-center gap-3">
               <div className="h-12 w-[300px] relative hidden md:block">
                 <Image 
-                  src="/ppc-horizontal.svg" 
+                  src="/ppc-banner.png" 
                   alt="PPC Logo" 
                   width={300} 
                   height={80}
@@ -41,7 +41,7 @@ export default function RootLayout({
               <div className="flex items-center md:hidden">
                 <div className="h-10 w-10 relative mr-2">
                   <Image 
-                    src="/ppc-official.svg" 
+                    src="/ppc-lrg.png" 
                     alt="PPC Logo" 
                     width={40} 
                     height={40}
@@ -55,10 +55,10 @@ export default function RootLayout({
             <nav>
               <ul className="flex gap-6">
                 <li>
-                  <Link href="/#key-issues" className="text-white/80 hover:text-white text-sm">Key Issues</Link>
+                  <Link href="/#key-issues" className="text-white hover:text-white/90 text-sm font-medium">Key Issues</Link>
                 </li>
                 <li>
-                  <Link href="/#categories" className="text-white/80 hover:text-white text-sm">Policy Categories</Link>
+                  <Link href="/#categories" className="text-white hover:text-white/90 text-sm font-medium">Policy Categories</Link>
                 </li>
               </ul>
             </nav>

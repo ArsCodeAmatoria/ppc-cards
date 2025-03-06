@@ -4,26 +4,9 @@ import { categories } from '@/data/policies';
 import PolicyCard from '@/components/PolicyCard';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { 
-  AlertTriangle, 
-  Users, 
-  AlertOctagon, 
-  MapPin,
-  Syringe, 
-  Tv2, 
-  School, 
-  Shield, 
-  ChevronRight,
-  LandPlot,
-  ArrowRight,
-  PiggyBank,
-  DollarSign,
-  Leaf,
-  HeartPulse,
-  Gavel,
-  GraduationCap
-} from 'lucide-react';
+import { Icons } from '@/components/icons';
 import Image from 'next/image';
+import * as React from 'react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -38,6 +21,16 @@ const containerVariants = {
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 }
+};
+
+// Utility function to render dynamic icons
+const DynamicIcon = ({ iconName, className }: { iconName?: string; className?: string }) => {
+  if (!iconName || !Icons[iconName as keyof typeof Icons]) {
+    return <Icons.FileText className={className} />;
+  }
+  
+  const Icon = Icons[iconName as keyof typeof Icons];
+  return <Icon className={className} />;
 };
 
 // Key issues data
@@ -158,138 +151,58 @@ const keyIssues = {
 };
 
 export default function Home() {
-  // Function to render the appropriate icon component
-  const renderIcon = (iconName: string, size = 24, className = '') => {
-    const iconMap: Record<string, React.ReactNode> = {
-      'Users': <Users size={size} className={className} />,
-      'AlertOctagon': <AlertOctagon size={size} className={className} />,
-      'MapPin': <MapPin size={size} className={className} />,
-      'Syringe': <Syringe size={size} className={className} />,
-      'Tv2': <Tv2 size={size} className={className} />,
-      'School': <School size={size} className={className} />,
-      'Shield': <Shield size={size} className={className} />,
-      'LandPlot': <LandPlot size={size} className={className} />,
-      'PiggyBank': <PiggyBank size={size} className={className} />,
-      'DollarSign': <DollarSign size={size} className={className} />,
-      'Leaf': <Leaf size={size} className={className} />,
-      'HeartPulse': <HeartPulse size={size} className={className} />,
-      'Gavel': <Gavel size={size} className={className} />,
-      'GraduationCap': <GraduationCap size={size} className={className} />,
-      'AlertTriangle': <AlertTriangle size={size} className={className} />
-    };
-    
-    return iconMap[iconName] || <AlertTriangle size={size} className={className} />;
-  };
-  
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-b from-[#5a3d9a] to-[#442d7b] mb-16">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/ppc.jpg')] bg-cover bg-center" />
-        </div>
-        <div className="container mx-auto max-w-6xl px-4 py-20 relative z-10">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-10 md:mb-0">
-              <motion.h1 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight"
-              >
-                Common Sense Policies for <span className="text-red-400">Canadian</span> Values
-              </motion.h1>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="text-xl text-white/90 mb-8"
-              >
-                Explore policy positions that put Canadians first through our interactive platform.
-              </motion.p>
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="flex flex-wrap gap-4"
-              >
-                <Link 
+      <section className="pt-20 pb-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900 to-indigo-900"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('/mesh-pattern.svg')]"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-center md:text-left"
+            >
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Canadian Values. <br />Canadian Policies.
+              </h1>
+              <p className="text-lg md:text-xl text-white/90 mb-8">
+                Explore the People's Party of Canada platform - policies that prioritize freedom, personal responsibility, fairness and respect.
+              </p>
+              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                <Link
                   href="#categories"
-                  className="px-6 py-3 bg-white text-[#442d7b] rounded-lg font-semibold hover:bg-white/90 transition-colors flex items-center"
+                  className="px-6 py-3 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors"
                 >
                   Explore Policies
-                  <ChevronRight className="ml-2 h-5 w-5" />
                 </Link>
-                <Link 
-                  href="#issues"
-                  className="px-6 py-3 bg-white/10 text-white rounded-lg font-semibold hover:bg-white/20 transition-colors"
+                <Link
+                  href="#key-issues"
+                  className="px-6 py-3 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors backdrop-blur-sm"
                 >
                   Key Issues
                 </Link>
-              </motion.div>
-            </div>
-            <div className="md:w-1/2 flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 }}
-                className="w-64 h-64 relative"
-              >
-                <Image 
-                  src="/ppc-official.svg" 
-                  alt="PPC Logo" 
-                  width={256} 
-                  height={256}
+              </div>
+            </motion.div>
+            <div className="flex justify-center md:justify-end">
+              <div className="w-64 h-64 md:w-80 md:h-80 relative">
+                <Image
+                  src="/ppc-party.png"
+                  alt="PPC Logo"
+                  fill
                   className="object-contain"
                   priority
                 />
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#442d7b] to-transparent"></div>
-      </div>
+      </section>
 
       {/* Categories Section */}
-      <div id="categories" className="container mx-auto max-w-6xl px-4 py-8 mb-16">
-        <div className="text-center mb-12">
-          <motion.h2 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-3xl font-bold text-ppc-purple mb-4"
-          >
-            Policy Categories
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-slate-600 max-w-2xl mx-auto"
-          >
-            Explore our comprehensive platform by category
-          </motion.p>
-        </div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {categories.map((category) => (
-            <motion.div key={category.id} variants={itemVariants}>
-              <PolicyCard
-                title={category.title}
-                description={category.description}
-                icon={category.icon}
-                href={`/category/${category.id}`}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-      
-      {/* Key Issues Section */}
-      <div id="issues" className="py-16 bg-gradient-to-b from-[#442d7b]/30 to-[#442d7b]/10 backdrop-blur-sm">
+      <div id="categories" className="py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-12">
             <motion.div
@@ -298,14 +211,65 @@ export default function Home() {
               viewport={{ once: true }}
               className="inline-flex items-center justify-center mb-4 bg-white/10 px-4 py-2 rounded-full"
             >
-              <AlertTriangle className="w-5 h-5 text-red-400 mr-2" />
+              <Icons.FileText className="w-5 h-5 text-purple-400 mr-2" />
+              <span className="text-white font-medium">Explore All Policies</span>
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl font-bold text-white mb-4"
+            >
+              Policy Categories
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="text-lg text-white/80 max-w-2xl mx-auto"
+            >
+              Explore our comprehensive platform by category
+            </motion.p>
+          </div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {categories.map((category) => (
+              <motion.div key={category.id} variants={itemVariants}>
+                <PolicyCard
+                  title={category.title}
+                  description={category.description}
+                  icon={category.icon}
+                  href={`/category/${category.id}`}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+      
+      {/* Key Issues Section */}
+      <div id="key-issues" className="py-16 bg-gradient-to-b from-purple-900/30 to-purple-900/10 backdrop-blur-sm">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center justify-center mb-4 bg-white/10 px-4 py-2 rounded-full"
+            >
+              <Icons.AlertTriangle className="w-5 h-5 text-red-400 mr-2" />
               <span className="text-white font-medium">Key Policy Positions</span>
             </motion.div>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl font-bold text-ppc-purple mb-4"
+              className="text-4xl font-bold text-white mb-4"
             >
               Issues That Matter
             </motion.h2>
@@ -314,59 +278,36 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-lg text-slate-600 max-w-2xl mx-auto"
+              className="text-lg text-white/80 max-w-2xl mx-auto"
             >
-              Our straightforward positions on topics that impact Canadians
+              Explore our positions on important and often controversial topics
             </motion.p>
           </div>
           
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {keyIssues.subcategories[0].policies.map((policy) => (
-              <motion.div
-                key={policy.id}
-                variants={itemVariants}
-              >
-                <Link href={`/issues/${policy.id}`} className="block h-full">
-                  <div className="bg-white/10 backdrop-blur-sm h-full rounded-xl border border-white/20 p-6 hover:bg-white/15 hover:border-white/30 transition-all hover:shadow-lg hover:shadow-[#442d7b]/10 hover:-translate-y-1 duration-300">
+          {/* Key Issues Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            {keyIssues.subcategories.map((subcategory) => (
+              <div key={subcategory.id} className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+                {subcategory.policies.map((policy) => (
+                  <Link key={policy.id} href={`/category/${keyIssues.id}/${subcategory.id}/${policy.id}`} className="block mb-8 last:mb-0">
                     <div className="flex items-center mb-4">
-                      <div className="p-3 rounded-lg bg-[#442d7b] mr-4">
-                        {renderIcon(policy.icon, 20, "text-white")}
+                      <div className="p-3 rounded-lg bg-purple-900/50 mr-4">
+                        <DynamicIcon iconName={policy.icon} className="w-5 h-5 text-white" />
                       </div>
                       <h3 className="text-xl font-bold text-white">{policy.title}</h3>
                     </div>
-                    
-                    <p className="text-white/80 mb-4">{policy.description}</p>
-                    
-                    <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
-                      <p className="text-white/90 italic text-sm">"{policy.quote}"</p>
-                    </div>
-                    
-                    <div className="space-y-2 mb-6">
-                      {policy.content.map((point, index) => (
-                        <div key={index} className="flex items-start">
-                          <div className="text-red-400 mr-2 mt-1">•</div>
-                          <p className="text-white/80 text-sm">{point}</p>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="flex justify-end mt-auto pt-4 border-t border-white/10">
+                    <p className="text-white/80 mb-4 pl-14">{policy.description}</p>
+                    <div className="pl-14">
                       <div className="inline-flex items-center text-sm font-medium text-white/70 hover:text-white group">
                         <span>Read more</span>
-                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <Icons.ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </div>
                     </div>
-                  </div>
-                </Link>
-              </motion.div>
+                  </Link>
+                ))}
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
       
@@ -392,32 +333,23 @@ export default function Home() {
           </motion.p>
         </div>
         
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-        >
-          {keyIssues.relatedTopics.map((topic, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-            >
-              <Link href="#" className="block h-full">
-                <div className="bg-white/5 backdrop-blur-sm h-full rounded-lg border border-white/10 p-4 hover:bg-white/10 hover:border-white/20 transition-all">
-                  <div className="flex items-center mb-3">
-                    <div className="p-2 rounded-md bg-[#442d7b]/70 mr-3">
-                      {renderIcon(topic.icon, 16, "text-white")}
-                    </div>
-                    <h3 className="text-md font-semibold text-white">{topic.title}</h3>
+        {/* Related Topics */}
+        <div>
+          <h3 className="text-2xl font-bold text-white mb-6 text-center">Related Topics</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {keyIssues.relatedTopics.map((topic, index) => (
+              <Link key={index} href="#" className="bg-white/5 border border-white/10 hover:bg-white/10 transition-colors rounded-lg p-4 backdrop-blur-sm">
+                <div className="flex items-center mb-3">
+                  <div className="p-2 rounded-md bg-purple-900/50 mr-3">
+                    <DynamicIcon iconName={topic.icon} className="w-4 h-4 text-white" />
                   </div>
-                  <p className="text-white/70 text-sm">{topic.description}</p>
+                  <h3 className="text-md font-semibold text-white">{topic.title}</h3>
                 </div>
+                <p className="text-sm text-white/80 pl-9">{topic.description}</p>
               </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
