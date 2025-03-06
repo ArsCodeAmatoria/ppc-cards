@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PPC Logo Comparison</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #442d7b;
+      color: white;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .comparison {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .logo-option {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .logo-container {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+    }
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .jpg-version {
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid white;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <h1>PPC Logo Comparison</h1>
+  
+  <div class="comparison">
+    <div class="logo-option">
+      <h2>JPG Version</h2>
+      <div class="logo-container">
+        <img src="/ppc.jpg" alt="PPC Logo JPG Version" class="jpg-version">
+      </div>
+      <p>Direct use of JPG image with border and rounded mask</p>
+    </div>
+    
+    <div class="logo-option">
+      <h2>SVG Version</h2>
+      <div class="logo-container">
+        <img src="/ppc-from-jpg.svg" alt="PPC Logo SVG Version">
+      </div>
+      <p>SVG recreation based on the JPG image</p>
+    </div>
+  </div>
+  
+  <div class="comparison">
+    <div class="logo-option">
+      <h2>Original SVG</h2>
+      <div class="logo-container">
+        <img src="/ppc-logo.svg" alt="Original PPC Logo SVG">
+      </div>
+      <p>First SVG version we created</p>
+    </div>
+    
+    <div class="logo-option">
+      <h2>Favicon SVG</h2>
+      <div class="logo-container">
+        <img src="/favicon.svg" alt="Favicon SVG" style="width: 64px; height: 64px;">
+      </div>
+      <p>Simplified version for favicon</p>
+    </div>
+  </div>
+</body>
+</html> 

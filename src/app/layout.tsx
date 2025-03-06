@@ -28,15 +28,17 @@ export default function RootLayout({
         <header className="py-6 border-b border-white/10">
           <div className="container mx-auto px-4 flex justify-center">
             <Link href="/" className="flex items-center gap-3">
-              <div className="h-12 w-12 relative">
-                <Image 
-                  src="/ppc-logo.svg" 
-                  alt="PPC Logo" 
-                  width={48} 
-                  height={48}
-                  className="object-contain"
-                  priority
-                />
+              <div className="flex items-center justify-center">
+                <div className="h-16 w-16 relative">
+                  <Image 
+                    src="/ppc-from-jpg.svg" 
+                    alt="PPC Logo" 
+                    width={64} 
+                    height={64}
+                    className="object-contain"
+                    priority
+                  />
+                </div>
               </div>
               <div className="text-white font-bold text-2xl">PPC Policy Explorer</div>
             </Link>
