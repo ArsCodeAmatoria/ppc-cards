@@ -1,71 +1,55 @@
 /**
- * This is a centralized utility for handling Next.js route params.
+ * This is a utility for handling Next.js 15+ route params.
  * 
  * In Next.js 15+, params is a Promise object that needs to be
- * unwrapped with `React.use()` before accessing properties.
+ * unwrapped before accessing properties.
  * 
- * CURRENT BEHAVIOR (Next.js 15):
- * - Direct access to params works but shows warnings
- * - This utility provides a centralized place for future updates
+ * For CLIENT components: Use React.use() (this utility)
+ * For SERVER components: Use async/await pattern
  * 
- * FUTURE SOLUTION:
- * When Next.js requires React.use(), you'll need to:
- * 1. Wrap your component in a Suspense boundary
- * 2. Update this utility to use React.use()
+ * USAGE EXAMPLES:
  * 
- * Example with Suspense (for future implementation):
+ * Client Component:
  * ```tsx
- * // In your page.tsx:
- * import { Suspense } from 'react';
+ * 'use client';
+ * import { useReactParams } from '@/utils/useReactParams';
  * 
- * export default function Page({ params }) {
- *   return (
- *     <Suspense fallback={<div>Loading...</div>}>
- *       <PageContent params={params} />
- *     </Suspense>
- *   );
+ * export default function Page({ params }: { params: Promise<{ id: string }> }) {
+ *   const { id } = useReactParams(params);
+ *   // ...rest of component
  * }
+ * ```
  * 
- * function PageContent({ params }) {
- *   const unwrappedParams = useReactParams(params);
- *   // ...rest of your component
+ * Server Component:
+ * ```tsx
+ * export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+ *   const { id } = await params;
+ *   // ...rest of component
  * }
  * ```
  */
 
-// Current implementation - still shows warnings but works
-export function useReactParams<T>(params: T): T {
-  // Direct access still works but with warnings
-  return params;
-}
-
-// Future implementation - uncomment when Next.js requires React.use()
-// Add proper import when updating:
-// import { use } from 'react'; 
-/*
-export function useReactParams<T>(params: T): T {
-  return use(params as any);
-}
-*/
+// Import use hook from React
+// The 'use' function is part of React 19
+// @ts-ignore - TypeScript doesn't recognize 'use' yet but it works in React 19
+import * as React from 'react';
+const use = (React as any).use;
 
 /**
- * HOC that properly handles Next.js params with Suspense
- * This is the recommended approach for Next.js 15+
+ * Unwraps params Promise in client components
+ * Must be used within a component wrapped in Suspense
  */
-export function withRouteParams<Props extends { params: any }>(
-  Component: React.ComponentType<Props>
-): React.FC<Props> {
-  // Create a wrapper component
-  const WithRouteParams: React.FC<Props> = (props) => {
-    return (
-      <Suspense fallback={<div className="py-8 text-center">Loading...</div>}>
-        <Component {...props} />
-      </Suspense>
-    );
-  };
-
-  // Add display name for debugging
-  WithRouteParams.displayName = `WithRouteParams(${Component.displayName || Component.name || 'Component'})`;
-
-  return WithRouteParams;
+export function useReactParams<T>(params: Promise<T> | T): T {
+  try {
+    // If params is already a Promise, unwrap it with use()
+    if (params instanceof Promise) {
+      return use(params);
+    }
+    // Otherwise just return it directly
+    return params;
+  } catch (error) {
+    // Fallback for handling errors or non-Promise params
+    console.warn('Error unwrapping params with React.use():', error);
+    return params as T;
+  }
 } 

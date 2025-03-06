@@ -6,13 +6,17 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
-import React from 'react';
+import * as React from 'react';
 import { useReactParams } from '@/utils/useReactParams';
 
+// TypeScript doesn't recognize Suspense yet but it's available in React
+// @ts-ignore
+const Suspense = React.Suspense;
+
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // Animation variants
@@ -31,9 +35,18 @@ const itemVariants = {
   show: { opacity: 1, y: 0 }
 };
 
+// Main component with Suspense boundary
 export default function CategoryPage({ params }: CategoryPageProps) {
+  return (
+    <Suspense fallback={<div className="py-8 text-center">Loading category details...</div>}>
+      <CategoryContent params={params} />
+    </Suspense>
+  );
+}
+
+// Content component that handles params unwrapping
+function CategoryContent({ params }: CategoryPageProps) {
   // Use our centralized utility for handling Next.js params
-  // This will make it easy to update when React.use() becomes required
   const unwrappedParams = useReactParams(params);
   const { id } = unwrappedParams;
   

@@ -5,20 +5,33 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import * as React from 'react';
 import { useReactParams } from '@/utils/useReactParams';
-import React from 'react';
+
+// TypeScript doesn't recognize Suspense yet but it's available in React
+// @ts-ignore
+const Suspense = React.Suspense;
 
 interface PolicyPageProps {
-  params: {
+  params: Promise<{
     id: string;
     subId: string;
     policyId: string;
-  };
+  }>;
 }
 
-// Main page component
+// Main component with Suspense boundary
 export default function PolicyPage({ params }: PolicyPageProps) {
-  // Use our centralized utility for handling Next.js params
+  return (
+    <Suspense fallback={<div className="py-8 text-center">Loading policy details...</div>}>
+      <PolicyContent params={params} />
+    </Suspense>
+  );
+}
+
+// Content component that handles params unwrapping
+function PolicyContent({ params }: PolicyPageProps) {
+  // Unwrap params using our utility
   const unwrappedParams = useReactParams(params);
   const { id, subId, policyId } = unwrappedParams;
   
