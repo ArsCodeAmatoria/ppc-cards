@@ -19,18 +19,24 @@ const PolicyCard = ({ title, description, icon = 'FileText', href }: PolicyCardP
   return (
     <Link href={href} className="block">
       <motion.div
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.03, y: -5 }}
         whileTap={{ scale: 0.98 }}
-        className="bg-white rounded-lg border-2 border-ppc-purple/20 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+        className="bg-white/5 rounded-lg border border-white/20 hover:border-white/30 hover:bg-white/10 transition-all p-6"
       >
-        <div className="flex items-center p-4 border-b border-slate-100 bg-ppc-purple/5">
-          <div className="p-2 bg-ppc-purple/10 rounded-lg mr-4">
-            <IconComponent className="w-6 h-6 text-ppc-purple" />
+        <div className="flex items-start mb-4">
+          <div className="p-3 bg-white/10 rounded-lg mr-4 flex-shrink-0">
+            <IconComponent className="w-6 h-6 text-white" />
           </div>
-          <h3 className="text-lg font-semibold text-ppc-purple">{title}</h3>
+          <div>
+            <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
+            <p className="text-white/80">{description}</p>
+          </div>
         </div>
-        <div className="p-4">
-          <p className="text-sm text-slate-600">{description}</p>
+        <div className="mt-4 flex justify-end">
+          <div className="inline-flex items-center text-sm font-medium text-white/70 hover:text-white">
+            <span>View Details</span>
+            <icons.ArrowRight className="ml-2 w-4 h-4" />
+          </div>
         </div>
       </motion.div>
     </Link>
