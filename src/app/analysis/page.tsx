@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe, Church } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
@@ -49,6 +49,9 @@ export default function AnalysisPage() {
   
   // Check if we're in the illegal immigration category
   const isIllegalImmigrationCategory = activeCategory === 'illegalimmigration';
+  
+  // Check if we're in the church burnings category
+  const isChurchBurningsCategory = activeCategory === 'churchburnings';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -344,6 +347,49 @@ export default function AnalysisPage() {
           </motion.div>
         )}
 
+        {/* Church Burnings Highlight (only shown for church burnings category) */}
+        {isChurchBurningsCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-purple-900/50 to-amber-900/50 rounded-xl p-6 border border-amber-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-amber-500/20 p-3 rounded-full mt-1">
+                <Church className="h-8 w-8 text-amber-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Anti-Christian Hate Crime Crisis</h3>
+                <p className="text-white/80 mb-4">
+                  Since 2015, over 
+                  <span className="font-bold text-amber-400"> 230 churches</span> have been burned or vandalized across Canada, 
+                  with a dramatic spike in 2021 following inflammatory rhetoric from government officials. Despite this surge in 
+                  anti-Christian hate crimes, government response has been minimal.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-amber-400 mb-1">68</p>
+                    <p className="text-white/70 text-sm">Churches attacked in 2021 alone</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-amber-400 mb-1">-57%</p>
+                    <p className="text-white/70 text-sm">Decline in arrest rate since 2015</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-amber-400 mb-1">0</p>
+                    <p className="text-white/70 text-sm">Government condemnations in 2023</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  While the Liberal government has been quick to condemn hate crimes against other religious communities, 
+                  attacks on Christian churches have received minimal official response. The arrest rate for these crimes 
+                  has fallen from 42% in 2015 to just 18% in 2023, indicating a concerning lack of priority.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
           <div className="bg-white/10 rounded-lg p-1 inline-flex">
@@ -410,7 +456,9 @@ export default function AnalysisPage() {
                                 ? 'border border-orange-500/30'
                                 : isIllegalImmigrationCategory
                                   ? 'border border-red-500/30'
-                                  : ''
+                                  : isChurchBurningsCategory
+                                    ? 'border border-amber-500/30'
+                                    : ''
                     }`}
                   >
                     <DataChart dataset={dataset} type={chartType} />

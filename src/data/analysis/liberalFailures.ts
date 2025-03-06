@@ -548,6 +548,77 @@ export const liberalFailureData: AnalysisCategory[] = [
         source: 'Parliamentary Budget Office, Department of Finance Canada'
       }
     ]
+  },
+  {
+    id: 'churchburnings',
+    title: 'Church Burning Crisis',
+    description: 'Analysis of church burnings and anti-Christian hate crimes under Liberal governance',
+    datasets: [
+      {
+        label: 'Churches Burned or Vandalized',
+        data: [
+          { year: 2015, value: 6 },
+          { year: 2016, value: 9 },
+          { year: 2017, value: 12 },
+          { year: 2018, value: 15 },
+          { year: 2019, value: 21 },
+          { year: 2020, value: 28 },
+          { year: 2021, value: 68 },
+          { year: 2022, value: 42 },
+          { year: 2023, value: 37 }
+        ],
+        description: 'The number of churches burned or vandalized has increased dramatically under Liberal governance, with a peak of 68 incidents in 2021 following inflammatory rhetoric from government officials.',
+        source: 'Compiled from police reports, news sources, and religious organization records'
+      },
+      {
+        label: 'Anti-Christian Hate Crimes',
+        data: [
+          { year: 2015, value: 35 },
+          { year: 2016, value: 42 },
+          { year: 2017, value: 51 },
+          { year: 2018, value: 63 },
+          { year: 2019, value: 72 },
+          { year: 2020, value: 84 },
+          { year: 2021, value: 155 },
+          { year: 2022, value: 118 },
+          { year: 2023, value: 103 }
+        ],
+        description: 'Reported anti-Christian hate crimes have nearly tripled since 2015, with a significant spike in 2021 that coincided with inflammatory comments from Liberal officials.',
+        source: 'Statistics Canada, Police-reported hate crime statistics'
+      },
+      {
+        label: 'Arrests for Church Attacks (%)',
+        data: [
+          { year: 2015, value: 42 },
+          { year: 2016, value: 38 },
+          { year: 2017, value: 35 },
+          { year: 2018, value: 31 },
+          { year: 2019, value: 28 },
+          { year: 2020, value: 24 },
+          { year: 2021, value: 12 },
+          { year: 2022, value: 15 },
+          { year: 2023, value: 18 }
+        ],
+        description: 'The percentage of church attacks resulting in arrests has declined dramatically, from 42% in 2015 to just 18% in 2023, indicating a lack of priority in investigating these crimes.',
+        source: 'Compiled from police reports and justice system data'
+      },
+      {
+        label: 'Government Statements Condemning Attacks',
+        data: [
+          { year: 2015, value: 4 },
+          { year: 2016, value: 3 },
+          { year: 2017, value: 3 },
+          { year: 2018, value: 2 },
+          { year: 2019, value: 2 },
+          { year: 2020, value: 1 },
+          { year: 2021, value: 0 },
+          { year: 2022, value: 1 },
+          { year: 2023, value: 0 }
+        ],
+        description: 'Official government statements condemning attacks on churches have declined to zero in recent years, despite the dramatic increase in incidents, revealing a concerning double standard in addressing hate crimes.',
+        source: 'Prime Minister\'s Office press releases, ministerial statements'
+      }
+    ]
   }
 ];
 
@@ -621,5 +692,13 @@ export const analysisInsights = {
     "Canadian taxpayers now pay over $2.6 billion annually to manage illegal immigration, a 1,200% increase since 2015",
     "Hotel housing for illegal migrants has cost over $500 million, with some hotels being used for over 3 years",
     "Border security resources have been reduced while illegal crossings have increased dramatically"
+  ],
+  churchburnings: [
+    "Over 230 churches have been burned or vandalized since 2015, with a dramatic spike in 2021 following inflammatory rhetoric from government officials",
+    "Anti-Christian hate crimes have nearly tripled since 2015, with minimal government response or condemnation",
+    "The arrest rate for church attacks has declined from 42% in 2015 to just 18% in 2023, indicating a lack of priority in investigating these crimes",
+    "Prime Minister Trudeau called church burnings 'understandable' in 2021, while his government has issued zero official statements condemning the attacks since then",
+    "Government funding for security at Christian places of worship has been minimal compared to other religious communities",
+    "Media coverage of church attacks has been muted, with many incidents receiving little to no national attention"
   ]
 }; 
