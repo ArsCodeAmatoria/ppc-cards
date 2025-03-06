@@ -31,6 +31,7 @@ export default function RootLayout({
                 alt="PPC Logo" 
                 width={250} 
                 height={60} 
+                priority
                 className="h-10 w-auto"
               />
             </Link>

@@ -38,10 +38,11 @@ export default function Home() {
           >
             <motion.div variants={item}>
               <Image
-                src="/ppc-banner.png"
+                src="/images/ppc-banner.png"
                 alt="PPC Logo"
                 width={300}
                 height={100}
+                priority
                 className="mx-auto mb-8"
               />
             </motion.div>
