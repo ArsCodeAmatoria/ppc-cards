@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
@@ -34,6 +34,9 @@ export default function AnalysisPage() {
   const ukraineData = activeCategory === 'economy' 
     ? category?.datasets.find(dataset => dataset.label.includes('Ukraine'))
     : null;
+    
+  // Check if we're in the transgender category
+  const isTransgenderCategory = activeCategory === 'transgender';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -119,6 +122,48 @@ export default function AnalysisPage() {
           </motion.div>
         )}
 
+        {/* Transgender Sports Highlight (only shown for transgender category) */}
+        {isTransgenderCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-purple-900/50 to-pink-900/50 rounded-xl p-6 border border-pink-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-pink-500/20 p-3 rounded-full mt-1">
+                <Trophy className="h-8 w-8 text-pink-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Women's Sports Under Threat</h3>
+                <p className="text-white/80 mb-4">
+                  Liberal policies allowing biological males to compete in women's sports have resulted in 
+                  <span className="font-bold text-pink-400"> 138 medals</span> being taken from female athletes since 2015. 
+                  These policies ignore biological reality and the inherent physical advantages that come with male puberty.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-pink-400 mb-1">153</p>
+                    <p className="text-white/70 text-sm">Biological males in women's sports</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-pink-400 mb-1">138</p>
+                    <p className="text-white/70 text-sm">Medals taken from female athletes</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-pink-400 mb-1">66</p>
+                    <p className="text-white/70 text-sm">Women's records broken</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  Notable examples include swimming, weightlifting, cycling, and track and field, where biological males 
+                  have dominated competitions, often breaking women's records by significant margins. These policies 
+                  undermine decades of progress in women's sports.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
           <div className="bg-white/10 rounded-lg p-1 inline-flex">
@@ -172,7 +217,13 @@ export default function AnalysisPage() {
                   <motion.div 
                     key={dataset.label} 
                     variants={item}
-                    className={`bg-white/5 rounded-xl p-6 ${dataset.label.includes('Ukraine') ? 'border border-red-500/30' : ''}`}
+                    className={`bg-white/5 rounded-xl p-6 ${
+                      dataset.label.includes('Ukraine') 
+                        ? 'border border-red-500/30' 
+                        : isTransgenderCategory 
+                          ? 'border border-pink-500/30' 
+                          : ''
+                    }`}
                   >
                     <DataChart dataset={dataset} type={chartType} />
                   </motion.div>

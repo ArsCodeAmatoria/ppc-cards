@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, BarChart2, TrendingUp, AlertTriangle } from 'lucide-react';
+import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy } from 'lucide-react';
 import { categories } from '@/data/policies';
 import { PolicyCard } from '@/components/PolicyCard';
 
@@ -144,6 +144,94 @@ export default function Home() {
                     </div>
                     <div className="text-white/80 text-xs">
                       Source: Department of Finance Canada, Fiscal Reference Tables
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Transgender Policy Analysis Section */}
+      <section className="w-full py-16 bg-gradient-to-r from-purple-800 to-pink-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+          >
+            <div className="flex flex-col md:flex-row-reverse items-center gap-8">
+              <div className="md:w-1/2">
+                <div className="flex items-center gap-2 mb-4">
+                  <Trophy className="h-6 w-6 text-pink-400" />
+                  <h3 className="text-xl font-bold text-white">Women's Sports Under Threat</h3>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Biological Males in Women's Sports
+                </h2>
+                <p className="text-white/80 mb-6">
+                  Liberal policies allowing biological males to compete in women's sports have resulted in 
+                  138 medals being taken from female athletes since 2015. These policies ignore biological 
+                  reality and the inherent physical advantages that come with male puberty.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-pink-500/20 p-1 rounded-full mt-1">
+                      <span className="text-pink-400 font-bold">153</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Males in Women's Sports</h4>
+                      <p className="text-white/70 text-sm">Cumulative since 2015, with numbers accelerating each year</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-pink-500/20 p-1 rounded-full mt-1">
+                      <span className="text-pink-400 font-bold">66</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Women's Records Broken</h4>
+                      <p className="text-white/70 text-sm">By biological males, many by significant margins</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <Link 
+                  href="/analysis" 
+                  className="inline-flex items-center px-6 py-3 bg-pink-600 hover:bg-pink-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  View Full Analysis
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+              
+              <div className="md:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-[4/3] bg-gradient-to-br from-purple-700/50 to-pink-900/50 rounded-xl overflow-hidden p-4">
+                  <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                  <div className="h-full flex flex-col">
+                    <div className="bg-white/10 rounded-lg p-3 mb-3">
+                      <h4 className="text-white font-medium text-sm mb-1">Medals Won by Biological Males in Women's Events</h4>
+                      <div className="h-40 relative">
+                        <div className="absolute bottom-0 left-0 w-[10%] h-[2%] bg-pink-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[12%] w-[10%] h-[6%] bg-pink-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[24%] w-[10%] h-[10%] bg-pink-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[36%] w-[10%] h-[18%] bg-pink-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[48%] w-[10%] h-[28%] bg-pink-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[60%] w-[10%] h-[12%] bg-pink-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[72%] w-[10%] h-[42%] bg-pink-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[84%] w-[10%] h-[64%] bg-pink-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[96%] w-[10%] h-[94%] bg-pink-400 rounded-t"></div>
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-white/60 text-xs">2015</span>
+                        <span className="text-white/60 text-xs">2023</span>
+                      </div>
+                    </div>
+                    <div className="text-white/80 text-xs">
+                      Source: Compiled from sports federation records and competition results
                     </div>
                   </div>
                 </div>

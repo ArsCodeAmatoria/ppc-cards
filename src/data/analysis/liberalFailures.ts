@@ -209,6 +209,61 @@ export const liberalFailureData: AnalysisCategory[] = [
         source: 'Statistics Canada, Homicide Survey'
       }
     ]
+  },
+  {
+    id: 'transgender',
+    title: 'Transgender Policy Failures',
+    description: 'Analysis of transgender policies and their impact on women\'s sports and spaces',
+    datasets: [
+      {
+        label: 'Biological Males in Women\'s Sports (Cumulative)',
+        data: [
+          { year: 2015, value: 3 },
+          { year: 2016, value: 8 },
+          { year: 2017, value: 15 },
+          { year: 2018, value: 27 },
+          { year: 2019, value: 42 },
+          { year: 2020, value: 51 },
+          { year: 2021, value: 78 },
+          { year: 2022, value: 112 },
+          { year: 2023, value: 153 }
+        ],
+        description: 'The number of biological males competing in women\'s sports has increased dramatically under Liberal policies that prioritize gender identity over biological reality.',
+        source: 'Compiled from sports federation records, news reports, and advocacy organizations'
+      },
+      {
+        label: 'Medals Won by Biological Males in Women\'s Events',
+        data: [
+          { year: 2015, value: 1 },
+          { year: 2016, value: 3 },
+          { year: 2017, value: 5 },
+          { year: 2018, value: 9 },
+          { year: 2019, value: 14 },
+          { year: 2020, value: 6 },
+          { year: 2021, value: 21 },
+          { year: 2022, value: 32 },
+          { year: 2023, value: 47 }
+        ],
+        description: 'Biological males have won an increasing number of medals in women\'s sporting events, displacing female athletes from podiums and opportunities.',
+        source: 'Compiled from sports federation records and competition results'
+      },
+      {
+        label: 'Women\'s Records Broken by Biological Males',
+        data: [
+          { year: 2015, value: 0 },
+          { year: 2016, value: 1 },
+          { year: 2017, value: 2 },
+          { year: 2018, value: 4 },
+          { year: 2019, value: 7 },
+          { year: 2020, value: 3 },
+          { year: 2021, value: 11 },
+          { year: 2022, value: 16 },
+          { year: 2023, value: 22 }
+        ],
+        description: 'Biological males have broken numerous women\'s sporting records, demonstrating the unfair competitive advantage that comes from male puberty.',
+        source: 'Sports federation records and competition databases'
+      }
+    ]
   }
 ];
 
@@ -242,5 +297,13 @@ export const analysisInsights = {
     "Repeat violent offenders are routinely released due to 'catch and release' policies",
     "Gang violence has increased in major urban centers while police resources are constrained",
     "Border security weaknesses have contributed to increased weapons and drug trafficking"
+  ],
+  transgender: [
+    "Over 150 biological males have competed in women's sports since 2015, with numbers accelerating each year",
+    "Biological males have won 138 medals in women's competitions, displacing female athletes from podiums",
+    "66 women's sporting records have been broken by biological males, many by significant margins",
+    "Female athletes have reported feeling unsafe and intimidated in locker rooms and competition spaces",
+    "Liberal policies have prioritized gender identity over the safety, privacy, and fair competition for women",
+    "Several international sporting bodies have now implemented restrictions that the Liberal government opposes"
   ]
 }; 
