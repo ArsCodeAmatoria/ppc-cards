@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import * as Icons from 'lucide-react';
 import { categories } from '@/data/policies';
+import { CompareButton } from '@/components/CompareButton';
 
 interface PolicyPageProps {
   params: {
@@ -119,7 +120,15 @@ export default function PolicyPage({ params }: PolicyPageProps) {
           
           {/* Related Links */}
           <motion.div variants={item} className="pt-8 border-t border-white/20">
-            <h2 className="text-xl font-bold mb-4">Related Policies</h2>
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold">Related Policies</h2>
+              <CompareButton 
+                policyId={policy.id}
+                categoryId={category.id}
+                subcategoryId={subcategory.id}
+                title={policy.title}
+              />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {subcategory.policies
                 .filter(p => p.id !== policy.id)

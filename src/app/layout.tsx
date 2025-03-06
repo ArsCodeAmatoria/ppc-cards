@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { SearchBar } from '@/components/search/SearchBar';
+import { CompareFloatingButton } from '@/components/CompareFloatingButton';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <header className="border-b border-white/20 py-4">
-          <div className="container mx-auto px-4 flex items-center justify-between">
+          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
             <Link href="/" className="flex items-center">
               <Image 
                 src="/images/ppc-banner.png" 
@@ -35,22 +37,17 @@ export default function RootLayout({
                 className="h-10 w-auto"
               />
             </Link>
-            <nav>
-              <ul className="flex gap-6">
-                <li>
-                  <Link href="/#key-issues" className="text-sm font-medium">Key Issues</Link>
-                </li>
-                <li>
-                  <Link href="/#categories" className="text-sm font-medium">Policy Categories</Link>
-                </li>
-              </ul>
-            </nav>
+            <div className="w-full md:w-auto md:max-w-md">
+              <SearchBar />
+            </div>
           </div>
         </header>
 
         <main>
           {children}
         </main>
+
+        <CompareFloatingButton />
 
         <footer className="py-8 border-t border-white/20 mt-12">
           <div className="container mx-auto px-4">
