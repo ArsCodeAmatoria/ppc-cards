@@ -1,397 +1,212 @@
 'use client';
 
-import { categories } from '@/data/policies';
-import PolicyCard from '@/components/PolicyCard';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Icons } from '@/components/icons';
+import React from 'react';
 import Image from 'next/image';
-import * as React from 'react';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
-
-// Utility function to render dynamic icons
-const DynamicIcon = ({ iconName, className }: { iconName?: string; className?: string }) => {
-  if (!iconName || !Icons[iconName as keyof typeof Icons]) {
-    return <Icons.FileText className={className} />;
-  }
-  
-  const Icon = Icons[iconName as keyof typeof Icons];
-  return <Icon className={className} />;
-};
-
-// Key issues data
-const keyIssues = {
-  id: 'key-issues',
-  title: 'Key Issues',
-  description: 'Important policy positions on significant topics',
-  icon: 'AlertTriangle',
-  subcategories: [
-    {
-      id: 'hot-topics',
-      title: 'Hot Topics',
-      description: 'Policy positions on key issues',
-      policies: [
-        {
-          id: 'immigration',
-          title: 'Immigration Reform',
-          description: 'A principled approach to immigration that puts Canadians first',
-          icon: 'Users',
-          content: ['Reduce immigration numbers', 'Focus on economic immigrants', 'Strengthen border security'],
-          details: 'The PPC supports significantly reduced immigration levels to ensure proper integration and economic benefit to Canadians. We prioritize merit-based selection that benefits our economy and society.',
-          quote: 'Mass immigration costs Canadian taxpayers billions of dollars and applies downward pressure on wages.'
-        },
-        {
-          id: 'unmarked-graves',
-          title: 'Indigenous Policy Reform',
-          description: 'Challenging mainstream narratives with evidence-based policy',
-          icon: 'AlertOctagon',
-          content: ['Question the validity of unmarked grave claims', 'Call for thorough investigation', 'Promote accountability in reporting'],
-          details: 'We support thorough investigation of claims regarding unmarked graves and believe in evidence-based policy discussions that prioritize truth over politically-motivated narratives.',
-          quote: 'Canadians deserve honest, evidence-based discussions on all indigenous issues.'
-        },
-        {
-          id: 'foreign-policy',
-          title: 'Foreign Policy Focus',
-          description: 'Canada-first approach to international relations',
-          icon: 'MapPin',
-          content: ['End financial support for Ukraine', 'Focus on domestic needs first', 'Develop independent foreign policy'],
-          details: "The PPC believes Canada should avoid foreign entanglements that do not directly benefit Canadians, putting our country's interests first rather than following other nations into conflict.",
-          quote: 'Canadian taxpayer dollars should be spent on Canadian priorities.'
-        },
-        {
-          id: 'covid',
-          title: 'Health Freedom',
-          description: 'Protecting individual medical autonomy',
-          icon: 'Syringe',
-          content: ['Oppose vaccine mandates', 'Advocate for personal health choice', 'Support medical privacy'],
-          details: 'We firmly believe in bodily autonomy and oppose any government mandates for medical procedures. Health decisions should remain between patients and their doctors.',
-          quote: 'No Canadian should ever be coerced into medical treatment against their will.'
-        },
-        {
-          id: 'cbc',
-          title: 'Media Reform',
-          description: 'Ending government interference in news media',
-          icon: 'Tv2',
-          content: ['End government funding of CBC', 'Privatize public broadcasting', 'Support media neutrality'],
-          details: 'The PPC supports ending all government funding to the CBC and other media outlets. A truly free press cannot exist when dependent on government subsidies.',
-          quote: 'Taxpayers should not fund media that promotes government narratives.'
-        },
-        {
-          id: 'gender',
-          title: 'Education Policy',
-          description: 'Restoring parental rights in education',
-          icon: 'School',
-          content: ['Remove gender ideology from curriculum', 'Restore parental rights in education', 'Focus on academic excellence'],
-          details: "We believe parents should be the primary decision-makers in their children's education. Schools should focus on academic excellence rather than social engineering.",
-          quote: 'Children should be protected from radical gender ideology in schools.'
-        },
-        {
-          id: 'guns',
-          title: 'Self-Defense Rights',
-          description: 'Supporting legal gun ownership for law-abiding citizens',
-          icon: 'Shield',
-          content: ['Support legal gun ownership', 'Advocate for self-defense rights', 'Oppose ineffective gun control'],
-          details: 'The PPC supports the rights of law-abiding Canadians to own firearms for hunting, sport shooting, and self-defense while focusing enforcement efforts on criminals.',
-          quote: 'Law-abiding gun owners deserve respect, not punishment.'
-        }
-      ]
-    }
-  ],
-  relatedTopics: [
-    {
-      title: 'Housing Affordability',
-      icon: 'LandPlot',
-      description: 'Making homeownership accessible again'
-    },
-    {
-      title: 'Economic Reform',
-      icon: 'DollarSign',
-      description: 'Balancing budgets and reducing taxation'
-    },
-    {
-      title: 'Banking Reform',
-      icon: 'PiggyBank',
-      description: 'Fighting inflation and financial mismanagement'
-    },
-    {
-      title: 'Environmental Policy',
-      icon: 'Leaf',
-      description: 'Practical approaches to conservation'
-    },
-    {
-      title: 'Healthcare Improvement',
-      icon: 'HeartPulse',
-      description: 'Enhancing service without increased spending'
-    },
-    {
-      title: 'Justice Reform',
-      icon: 'Gavel',
-      description: 'Stronger consequences for violent crime'
-    },
-    {
-      title: 'Education Excellence',
-      icon: 'GraduationCap',
-      description: 'Focusing on core academic subjects'
-    }
-  ]
-};
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { categories } from '@/data/policies';
+import { PolicyCard } from '@/components/PolicyCard';
 
 export default function Home() {
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
-    <>
+    <main className="flex min-h-screen flex-col items-center justify-between">
       {/* Hero Section */}
-      <section className="pt-20 pb-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900 to-indigo-900"></div>
-        <div className="absolute inset-0 opacity-10 bg-[url('/mesh-pattern.svg')]"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-center md:text-left"
-            >
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Canadian Values. <br />Canadian Policies.
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-8">
-                Explore the People's Party of Canada platform - policies that prioritize freedom, personal responsibility, fairness and respect.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                <Link
-                  href="#categories"
-                  className="px-6 py-3 rounded-lg bg-purple-600 text-white font-medium hover:bg-purple-700 transition-colors"
-                >
-                  Explore Policies
-                </Link>
-                <Link
-                  href="#key-issues"
-                  className="px-6 py-3 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors backdrop-blur-sm"
-                >
-                  Key Issues
-                </Link>
-              </div>
-            </motion.div>
-            <div className="flex justify-center md:justify-end">
-              <div className="w-64 h-64 md:w-80 md:h-80 relative">
-                <Image
-                  src="/ppc-party.png"
-                  alt="PPC Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories Section */}
-      <div id="categories" className="py-16">
-        <div className="container mx-auto max-w-6xl px-4">
-          <div className="text-center mb-12">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center justify-center mb-4 bg-white/10 px-4 py-2 rounded-full"
-            >
-              <Icons.FileText className="w-5 h-5 text-purple-400 mr-2" />
-              <span className="text-white font-medium">Explore All Policies</span>
-            </motion.div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl font-bold text-white mb-4"
-            >
-              Policy Categories
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="text-lg text-white/80 max-w-2xl mx-auto"
-            >
-              Explore our comprehensive platform by category
-            </motion.p>
-          </div>
-
+      <div className="w-full bg-gradient-to-b from-purple-900 to-purple-800 py-16 md:py-24">
+        <div className="container mx-auto px-4 text-center">
           <motion.div
-            variants={containerVariants}
+            variants={container}
             initial="hidden"
             animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="max-w-4xl mx-auto"
           >
-            {categories.map((category) => (
-              <motion.div key={category.id} variants={itemVariants}>
-                <PolicyCard
-                  title={category.title}
-                  description={category.description}
-                  icon={category.icon}
-                  href={`/category/${category.id}`}
-                />
-              </motion.div>
-            ))}
+            <motion.div variants={item}>
+              <Image
+                src="/ppc-banner.png"
+                alt="PPC Logo"
+                width={300}
+                height={100}
+                className="mx-auto mb-8"
+              />
+            </motion.div>
+            <motion.h1 
+              variants={item}
+              className="text-3xl md:text-5xl font-bold text-white mb-6"
+            >
+              People's Party of Canada
+            </motion.h1>
+            <motion.p 
+              variants={item}
+              className="text-lg md:text-xl text-white/80 mb-8"
+            >
+              Common sense policies for a stronger, freer Canada
+            </motion.p>
+            <motion.div variants={item}>
+              <Link 
+                href="#policies" 
+                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-purple-900 bg-white hover:bg-gray-100 transition-colors"
+              >
+                Explore Our Policies
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>
-      
-      {/* Key Issues Section */}
-      <div id="key-issues" className="py-16 bg-gradient-to-b from-purple-900/30 to-purple-900/10 backdrop-blur-sm">
-        <div className="container mx-auto max-w-6xl px-4">
-          <div className="text-center mb-12">
+
+      {/* Featured Policy */}
+      <div className="w-full py-16 bg-gradient-to-b from-purple-800 to-purple-700">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4">Featured Policy</h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Our commitment to media reform is a cornerstone of our platform for a freer Canada
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            {/* Media Reform Card */}
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center justify-center mb-4 bg-white/10 px-4 py-2 rounded-full"
-            >
-              <Icons.AlertTriangle className="w-5 h-5 text-red-400 mr-2" />
-              <span className="text-white font-medium">Key Policy Positions</span>
-            </motion.div>
-            <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl font-bold text-white mb-4"
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl overflow-hidden shadow-xl"
             >
-              Issues That Matter
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-lg text-white/80 max-w-2xl mx-auto"
-            >
-              Explore our positions on important and often controversial topics
-            </motion.p>
-          </div>
-          
-          {/* Key Issues Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-            {keyIssues.subcategories.map((subcategory) => (
-              <div key={subcategory.id} className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                {subcategory.policies.map((policy) => {
-                  if (policy.id === 'cbc') {
-                    // Special formatting for Media Reform card
-                    return (
-                      <Link 
-                        key={policy.id} 
-                        href={`/category/${keyIssues.id}/${subcategory.id}/${policy.id}`} 
-                        className="block mb-8 last:mb-0 bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all"
-                      >
-                        <h3 className="text-xl font-bold text-white mb-4">Media Reform</h3>
-                        <p className="text-white/90 mb-3">Ending government interference in news media</p>
-                        
-                        <div className="bg-white/5 p-4 rounded-lg mb-4 border border-white/10">
-                          <p className="italic text-white/80 text-sm">"Taxpayers should not fund media that promotes government narratives."</p>
-                        </div>
-                        
-                        <div className="space-y-2 mb-4">
-                          <div className="flex items-start">
-                            <div className="text-purple-400 mr-2">•</div>
-                            <p className="text-white/80">End government funding of CBC</p>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="text-purple-400 mr-2">•</div>
-                            <p className="text-white/80">Privatize public broadcasting</p>
-                          </div>
-                          <div className="flex items-start">
-                            <div className="text-purple-400 mr-2">•</div>
-                            <p className="text-white/80">Support media neutrality</p>
-                          </div>
-                        </div>
-                        
-                        <div className="inline-flex items-center text-sm font-medium text-purple-400 hover:text-purple-300 group">
-                          <span>Read more</span>
-                          <Icons.ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </Link>
-                    );
-                  }
-                  
-                  // Regular policy cards
-                  return (
-                    <Link key={policy.id} href={`/category/${keyIssues.id}/${subcategory.id}/${policy.id}`} className="block mb-8 last:mb-0">
-                      <div className="flex items-center mb-4">
-                        <div className="p-3 rounded-lg bg-purple-900/50 mr-4">
-                          <DynamicIcon iconName={policy.icon} className="w-5 h-5 text-white" />
-                        </div>
-                        <h3 className="text-xl font-bold text-white">{policy.title}</h3>
-                      </div>
-                      <p className="text-white/80 mb-4 pl-14">{policy.description}</p>
-                      <div className="pl-14">
-                        <div className="inline-flex items-center text-sm font-medium text-white/70 hover:text-white group">
-                          <span>Read more</span>
-                          <Icons.ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      
-      {/* Related Topics Section */}
-      <div className="container mx-auto max-w-6xl px-4 py-16">
-        <div className="text-center mb-12">
-          <motion.h2 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-ppc-purple mb-4"
-          >
-            Explore More Topics
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-slate-600 max-w-2xl mx-auto"
-          >
-            Discover our positions on other important issues facing Canadians
-          </motion.p>
-        </div>
-        
-        {/* Related Topics */}
-        <div>
-          <h3 className="text-2xl font-bold text-white mb-6 text-center">Related Topics</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {keyIssues.relatedTopics.map((topic, index) => (
-              <Link key={index} href="#" className="bg-white/5 border border-white/10 hover:bg-white/10 transition-colors rounded-lg p-4 backdrop-blur-sm">
-                <div className="flex items-center mb-3">
-                  <div className="p-2 rounded-md bg-purple-900/50 mr-3">
-                    <DynamicIcon iconName={topic.icon} className="w-4 h-4 text-white" />
+              <Link href="/category/governance/media-reform" className="block p-6 md:p-8">
+                <div className="flex flex-col md:flex-row items-start gap-6">
+                  <div className="bg-white/10 p-4 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-8 w-8 text-white">
+                      <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"></path>
+                      <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"></path>
+                      <circle cx="12" cy="12" r="2"></circle>
+                      <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"></path>
+                      <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"></path>
+                    </svg>
                   </div>
-                  <h3 className="text-md font-semibold text-white">{topic.title}</h3>
+                  <div className="flex-1">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Media Reform</h3>
+                    <p className="text-white/80 mb-4">
+                      Ending government interference in news media and ensuring Canadians have access to diverse viewpoints.
+                    </p>
+                    <div className="flex items-center text-white font-medium">
+                      View Details
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm text-white/80 pl-9">{topic.description}</p>
               </Link>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Policy Categories */}
+      <div id="policies" className="w-full py-16 bg-gradient-to-b from-purple-700 to-purple-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4">Our Policy Platform</h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Explore our comprehensive policy platform designed to make Canada stronger, freer, and more prosperous
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categories.map((category) => (
+              <motion.div
+                key={category.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ scale: 1.03 }}
+                className="bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl overflow-hidden shadow-xl"
+              >
+                <Link href={`/category/${category.id}`} className="block p-6">
+                  <h3 className="text-xl font-bold text-white mb-2">{category.title}</h3>
+                  <p className="text-white/80 mb-4">{category.description}</p>
+                  <div className="flex items-center text-white font-medium">
+                    Explore Policies
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
-    </>
+
+      {/* Featured Policies */}
+      <div className="w-full py-16 bg-gradient-to-b from-purple-900 to-purple-800">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4">Featured Policies</h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Key policies that define our vision for Canada
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Get a few featured policies from different categories */}
+            {categories.flatMap(category => 
+              category.subcategories.flatMap(subcategory => 
+                subcategory.policies.slice(0, 1).map(policy => (
+                  <PolicyCard
+                    key={`${category.id}-${subcategory.id}-${policy.id}`}
+                    title={policy.title}
+                    description={policy.description}
+                    icon={policy.icon}
+                    href={`/category/${category.id}/${subcategory.id}/${policy.id}`}
+                  />
+                ))
+              )
+            ).slice(0, 6)}
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="w-full py-8 bg-purple-950 text-white/80">
+        <div className="container mx-auto px-4 text-center">
+          <p>© {new Date().getFullYear()} People's Party of Canada. All rights reserved.</p>
+          <p className="mt-2 text-sm">This is a demonstration website. Not affiliated with the actual PPC.</p>
+        </div>
+      </footer>
+    </main>
   );
-}
+} 

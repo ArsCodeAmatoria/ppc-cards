@@ -1,99 +1,69 @@
 'use client';
 
-import { categories } from '@/data/policies';
-import PolicyCard from '@/components/PolicyCard';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { notFound } from 'next/navigation';
-import * as React from 'react';
-import { useReactParams } from '@/utils/useReactParams';
-
-// TypeScript doesn't recognize Suspense yet but it's available in React
-// @ts-ignore
-const Suspense = React.Suspense;
+import { PolicyCard } from '@/components/PolicyCard';
+import { categories } from '@/data/policies';
 
 interface CategoryPageProps {
-  params: Promise<{
+  params: {
     id: string;
-  }>;
+  };
 }
 
-// Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
-
-// Main component with Suspense boundary
 export default function CategoryPage({ params }: CategoryPageProps) {
-  return (
-    <Suspense fallback={<div className="py-8 text-center">Loading category details...</div>}>
-      <CategoryContent params={params} />
-    </Suspense>
-  );
-}
-
-// Content component that handles params unwrapping
-function CategoryContent({ params }: CategoryPageProps) {
-  // Use our centralized utility for handling Next.js params
-  const unwrappedParams = useReactParams(params);
-  const { id } = unwrappedParams;
+  const { id } = params;
   
-  const category = categories.find((c) => c.id === id);
+  // Find the category
+  const category = categories.find(category => category.id === id);
   
   if (!category) {
-    return notFound();
+    return (
+      <div className="container mx-auto px-4 py-12 text-center">
+        <h1 className="text-3xl font-bold mb-4">Category Not Found</h1>
+        <p className="mb-8">The category you're looking for doesn't exist.</p>
+        <Link href="/" className="inline-flex items-center text-sm font-medium hover:underline">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Home
+        </Link>
+      </div>
+    );
   }
 
   return (
-    <div className="container mx-auto max-w-6xl px-4 py-8">
-      <Link 
-        href="/"
-        className="inline-flex items-center mb-8 text-ppc-purple hover:text-ppc-purple/70"
-      >
-        <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Home
-      </Link>
-
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="show" 
-        className="space-y-6"
-      >
-        <motion.h1 variants={itemVariants} className="text-4xl font-bold text-ppc-purple">
-          {category.title}
-        </motion.h1>
-        
-        <motion.p variants={itemVariants} className="text-lg text-slate-600 mb-8">
-          {category.description}
-        </motion.p>
-
-        <motion.div 
-          variants={itemVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {category.subcategories.map((subcategory) => (
-            <PolicyCard
-              key={subcategory.id}
-              title={subcategory.title}
-              description={subcategory.description}
-              href={`/category/${id}/${subcategory.id}`}
-            />
-          ))}
-        </motion.div>
-      </motion.div>
+    <div className="container mx-auto px-4 py-12">
+      <div className="mb-8">
+        <Link href="/" className="inline-flex items-center text-sm font-medium hover:underline">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Home
+        </Link>
+      </div>
+      
+      <div className="mb-12">
+        <h1 className="text-4xl font-bold mb-4">{category.title}</h1>
+        <p className="text-lg">{category.description}</p>
+      </div>
+      
+      <div className="space-y-16">
+        {category.subcategories.map((subcategory) => (
+          <div key={subcategory.id} className="mb-12 last:mb-0">
+            <h2 className="text-2xl font-bold mb-6">{subcategory.title}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {subcategory.policies.map((policy) => (
+                <PolicyCard
+                  key={policy.id}
+                  title={policy.title}
+                  description={policy.description}
+                  icon={policy.icon}
+                  href={`/category/${id}/${subcategory.id}/${policy.id}`}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 } 

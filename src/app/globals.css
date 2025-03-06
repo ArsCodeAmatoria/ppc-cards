@@ -2,29 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #442d7b;
+  --foreground: #ffffff;
+}
+
+* {
+  color: var(--foreground);
+}
+
 body {
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
 }
 
-/* PPC Colors */
-.text-ppc-purple {
-  color: #4B0082;
+a {
+  color: var(--foreground);
+  text-decoration: none;
 }
 
-.bg-ppc-purple\/10 {
-  background-color: rgba(75, 0, 130, 0.1);
+a:hover {
+  text-decoration: underline;
 }
 
-.bg-ppc-purple\/5 {
-  background-color: rgba(75, 0, 130, 0.05);
-}
-
-.border-ppc-purple\/20 {
-  border-color: rgba(75, 0, 130, 0.2);
-}
-
-.text-slate-600 {
-  color: #475569;
+svg {
+  color: var(--foreground);
 } 

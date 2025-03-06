@@ -1,11 +1,8 @@
-'use client';
-
 import React from 'react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Icons } from '@/components/icons';
+import { ArrowRight } from 'lucide-react';
+import * as Icons from 'lucide-react';
 
-// Note: 'key' is a special React prop and should not be included in component props
 interface PolicyCardProps {
   title: string;
   description: string;
@@ -14,44 +11,30 @@ interface PolicyCardProps {
 }
 
 export function PolicyCard({ title, description, icon, href }: PolicyCardProps) {
-  // Dynamically get the icon component
+  // Dynamically get the icon component if provided
   const IconComponent = icon ? Icons[icon as keyof typeof Icons] : null;
 
   return (
-    <Link href={href} className="block h-full">
-      <motion.div
-        className="h-full p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 flex flex-col"
-        whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
+    <Link
+      href={href}
+      className="group flex flex-col h-full overflow-hidden rounded-lg border border-white/20 hover:border-white/40 transition-all"
+    >
+      <div className="p-6 flex-grow">
         {IconComponent && (
-          <div className="mb-4">
-            <IconComponent className="h-8 w-8 text-purple-400" />
+          <div className="mb-4 p-3 inline-block rounded-full border border-white/20">
+            <IconComponent className="h-6 w-6" />
           </div>
         )}
-        <h3 className="text-xl font-bold mb-2 text-white">{title}</h3>
-        <p className="text-white/80 mb-4 flex-grow">{description}</p>
-        <div className="text-purple-400 font-medium flex items-center mt-auto">
-          View Details
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4 ml-1"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+        <h3 className="text-xl font-bold mb-3 group-hover:underline">{title}</h3>
+        <p className="mb-4">{description}</p>
+      </div>
+      
+      <div className="px-6 py-4 border-t border-white/20 flex items-center justify-between">
+        <span className="text-sm">View Details</span>
+        <div className="p-2 rounded-lg group-hover:bg-white/10 transition-colors">
+          <ArrowRight className="h-4 w-4" />
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
-}
-
-export default PolicyCard; 
+} 
