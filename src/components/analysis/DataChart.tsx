@@ -66,11 +66,19 @@ export function DataChart({ dataset, type = 'line', className = '' }: DataChartP
     plugins: {
       legend: {
         position: 'top' as const,
+        align: 'start' as const,
         labels: {
           color: 'white',
           font: {
             size: 14,
           },
+          boxWidth: 15,
+          padding: 15,
+        },
+        title: {
+          padding: {
+            bottom: 25,
+          }
         },
       },
       title: {
@@ -102,17 +110,34 @@ export function DataChart({ dataset, type = 'line', className = '' }: DataChartP
         ticks: {
           color: 'rgba(255, 255, 255, 0.7)',
         },
+        // Add padding to the top of the chart to prevent overlap with legend
+        beginAtZero: true,
       },
     },
+    // Add padding to the chart to prevent overlap with legend
+    layout: {
+      padding: {
+        top: 10,
+        right: 10,
+        bottom: 0,
+        left: 10
+      }
+    }
   };
   
+  // Adjust chart height based on label length
+  const isLongLabel = dataset.label.length > 25;
+  const chartHeight = isLongLabel ? 'h-96' : 'h-80';
+  
   return (
-    <div className={`w-full h-80 ${className}`}>
-      {type === 'line' ? (
-        <Line data={chartData} options={options} />
-      ) : (
-        <Bar data={chartData} options={options} />
-      )}
+    <div className={`w-full ${chartHeight} ${className}`}>
+      <div className="h-full">
+        {type === 'line' ? (
+          <Line data={chartData} options={options} />
+        ) : (
+          <Bar data={chartData} options={options} />
+        )}
+      </div>
       <div className="mt-4">
         <p className="text-white/80 text-sm">{dataset.description}</p>
         <p className="text-white/60 text-xs mt-1">Source: {dataset.source}</p>

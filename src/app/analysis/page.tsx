@@ -114,23 +114,27 @@ export default function AnalysisPage() {
               <p className="text-white/80 mb-6">{category.description}</p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-12">
               {/* Charts */}
               <motion.div
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className="space-y-12"
+                className="space-y-16"
               >
                 {category.datasets.map((dataset) => (
-                  <motion.div key={dataset.label} variants={item}>
+                  <motion.div 
+                    key={dataset.label} 
+                    variants={item}
+                    className="bg-white/5 rounded-xl p-6"
+                  >
                     <DataChart dataset={dataset} type={chartType} />
                   </motion.div>
                 ))}
               </motion.div>
 
               {/* Insights */}
-              <div className="lg:sticky lg:top-24 h-fit">
+              <div className="xl:sticky xl:top-24 h-fit">
                 <InsightsList 
                   insights={analysisInsights[category.id as keyof typeof analysisInsights]} 
                 />
