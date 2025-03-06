@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock, Globe, Church, Star } from 'lucide-react';
+import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock, Globe, Church, Star, Flag } from 'lucide-react';
 import { categories } from '@/data/policies';
 import { PolicyCard } from '@/components/PolicyCard';
 
@@ -760,6 +760,94 @@ export default function Home() {
                     </div>
                     <div className="text-white/80 text-xs">
                       Source: B'nai Brith Canada Annual Audit of Antisemitic Incidents
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Islamism Section */}
+      <section className="w-full py-16 bg-gradient-to-r from-purple-800 to-green-800">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/2">
+                <div className="flex items-center gap-2 mb-4">
+                  <Flag className="h-6 w-6 text-green-400" />
+                  <h3 className="text-xl font-bold text-white">Rising Islamism Crisis</h3>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Extremism Unchecked
+                </h2>
+                <p className="text-white/80 mb-6">
+                  Pro-Hamas rallies in Canada have increased by over 6,100% since 2015, with 187 rallies in 2023 
+                  alone following the October 7 attacks. Meanwhile, government funding to organizations with 
+                  documented ties to Islamist groups has increased by over 1,400%.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-green-500/20 p-1 rounded-full mt-1">
+                      <span className="text-green-400 font-bold">$27.8M</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Funding to Islamist-Linked Groups</h4>
+                      <p className="text-white/70 text-sm">In 2023 alone</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-green-500/20 p-1 rounded-full mt-1">
+                      <span className="text-green-400 font-bold">1,600%</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Increase in Islamist-Linked Advisors</h4>
+                      <p className="text-white/70 text-sm">Since 2015 under Liberal governance</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <Link 
+                  href="/analysis" 
+                  className="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  View Full Analysis
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+              
+              <div className="md:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-[4/3] bg-gradient-to-br from-purple-700/50 to-green-800/50 rounded-xl overflow-hidden p-4">
+                  <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                  <div className="h-full flex flex-col">
+                    <div className="bg-white/10 rounded-lg p-3 mb-3">
+                      <h4 className="text-white font-medium text-sm mb-1">Pro-Hamas Rallies in Canada</h4>
+                      <div className="h-40 relative">
+                        <div className="absolute bottom-0 left-0 w-[10%] h-[2%] bg-green-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[12%] w-[10%] h-[3%] bg-green-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[24%] w-[10%] h-[4%] bg-green-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[36%] w-[10%] h-[6%] bg-green-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[48%] w-[10%] h-[9%] bg-green-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[60%] w-[10%] h-[7%] bg-green-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[72%] w-[10%] h-[14%] bg-green-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[84%] w-[10%] h-[17%] bg-green-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[96%] w-[10%] h-[100%] bg-green-400 rounded-t"></div>
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-white/60 text-xs">2015</span>
+                        <span className="text-white/60 text-xs">2023</span>
+                      </div>
+                    </div>
+                    <div className="text-white/80 text-xs">
+                      Source: Compiled from police reports, news sources, and community organizations
                     </div>
                   </div>
                 </div>
