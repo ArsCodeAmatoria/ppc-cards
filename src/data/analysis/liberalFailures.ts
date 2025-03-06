@@ -619,6 +619,77 @@ export const liberalFailureData: AnalysisCategory[] = [
         source: 'Prime Minister\'s Office press releases, ministerial statements'
       }
     ]
+  },
+  {
+    id: 'antisemitism',
+    title: 'Rising Anti-Semitism Crisis',
+    description: 'Analysis of increasing anti-Semitism and the Liberal government\'s failure to protect Jewish Canadians',
+    datasets: [
+      {
+        label: 'Anti-Semitic Incidents',
+        data: [
+          { year: 2015, value: 178 },
+          { year: 2016, value: 221 },
+          { year: 2017, value: 249 },
+          { year: 2018, value: 345 },
+          { year: 2019, value: 306 },
+          { year: 2020, value: 331 },
+          { year: 2021, value: 404 },
+          { year: 2022, value: 492 },
+          { year: 2023, value: 853 }
+        ],
+        description: 'Anti-Semitic incidents have increased by 379% since 2015, with a dramatic surge in 2023 following the October 7 Hamas attacks on Israel and the Liberal government\'s weak response.',
+        source: 'B\'nai Brith Canada Annual Audit of Antisemitic Incidents'
+      },
+      {
+        label: 'Violent Anti-Semitic Attacks',
+        data: [
+          { year: 2015, value: 12 },
+          { year: 2016, value: 15 },
+          { year: 2017, value: 16 },
+          { year: 2018, value: 21 },
+          { year: 2019, value: 24 },
+          { year: 2020, value: 19 },
+          { year: 2021, value: 27 },
+          { year: 2022, value: 32 },
+          { year: 2023, value: 61 }
+        ],
+        description: 'Violent attacks against Jewish Canadians have increased by over 400% since 2015, with Jewish Canadians now the most targeted religious group for hate crimes in the country.',
+        source: 'Statistics Canada, Police-reported hate crime statistics'
+      },
+      {
+        label: 'Anti-Israel Protests at Universities',
+        data: [
+          { year: 2015, value: 8 },
+          { year: 2016, value: 12 },
+          { year: 2017, value: 15 },
+          { year: 2018, value: 19 },
+          { year: 2019, value: 23 },
+          { year: 2020, value: 11 },
+          { year: 2021, value: 37 },
+          { year: 2022, value: 42 },
+          { year: 2023, value: 128 }
+        ],
+        description: 'Anti-Israel protests at Canadian universities have increased by 1,500% since 2015, with many featuring explicit anti-Semitic rhetoric and creating hostile environments for Jewish students.',
+        source: 'Compiled from university reports, campus police data, and Jewish student organizations'
+      },
+      {
+        label: 'Security Funding for Jewish Institutions (Millions CAD)',
+        data: [
+          { year: 2015, value: 1.2 },
+          { year: 2016, value: 1.3 },
+          { year: 2017, value: 1.5 },
+          { year: 2018, value: 1.8 },
+          { year: 2019, value: 2.1 },
+          { year: 2020, value: 2.4 },
+          { year: 2021, value: 2.7 },
+          { year: 2022, value: 3.1 },
+          { year: 2023, value: 4.2 }
+        ],
+        description: 'Despite a 379% increase in anti-Semitic incidents, security funding for Jewish institutions has only increased by 250%, leaving many synagogues, schools, and community centers vulnerable.',
+        source: 'Public Safety Canada, Security Infrastructure Program'
+      }
+    ]
   }
 ];
 
@@ -700,5 +771,13 @@ export const analysisInsights = {
     "Prime Minister Trudeau called church burnings 'understandable' in 2021, while his government has issued zero official statements condemning the attacks since then",
     "Government funding for security at Christian places of worship has been minimal compared to other religious communities",
     "Media coverage of church attacks has been muted, with many incidents receiving little to no national attention"
+  ],
+  antisemitism: [
+    "Anti-Semitic incidents have increased by 379% since 2015, with a dramatic surge in 2023 following the October 7 Hamas attacks",
+    "Violent attacks against Jewish Canadians have increased by over 400% since 2015, making Jews the most targeted religious group",
+    "The Liberal government has failed to adequately condemn anti-Semitism at pro-Hamas rallies across Canada",
+    "Security funding for Jewish institutions has not kept pace with the dramatic increase in threats and attacks",
+    "Anti-Israel protests at Canadian universities have increased by 1,500%, creating hostile environments for Jewish students",
+    "The Liberal government has maintained funding for UNRWA despite evidence of its ties to Hamas and involvement in anti-Semitic education"
   ]
 }; 

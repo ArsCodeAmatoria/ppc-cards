@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe, Church } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe, Church, Star } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
@@ -52,6 +52,9 @@ export default function AnalysisPage() {
   
   // Check if we're in the church burnings category
   const isChurchBurningsCategory = activeCategory === 'churchburnings';
+  
+  // Check if we're in the anti-semitism category
+  const isAntiSemitismCategory = activeCategory === 'antisemitism';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -390,6 +393,50 @@ export default function AnalysisPage() {
           </motion.div>
         )}
 
+        {/* Anti-Semitism Highlight (only shown for anti-semitism category) */}
+        {isAntiSemitismCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-purple-900/50 to-blue-800/50 rounded-xl p-6 border border-blue-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-blue-500/20 p-3 rounded-full mt-1">
+                <Star className="h-8 w-8 text-blue-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Rising Anti-Semitism Crisis</h3>
+                <p className="text-white/80 mb-4">
+                  Anti-Semitic incidents have increased by 
+                  <span className="font-bold text-blue-400"> 379% since 2015</span>, with a dramatic surge in 2023 
+                  following the October 7 Hamas attacks on Israel. Despite this alarming trend, the Liberal government's 
+                  response has been inadequate.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-blue-400 mb-1">853</p>
+                    <p className="text-white/70 text-sm">Anti-Semitic incidents in 2023</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-blue-400 mb-1">+408%</p>
+                    <p className="text-white/70 text-sm">Increase in violent attacks</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-blue-400 mb-1">128</p>
+                    <p className="text-white/70 text-sm">Campus anti-Israel protests in 2023</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  Jewish Canadians are now the most targeted religious group for hate crimes in the country. 
+                  Despite this, security funding for Jewish institutions has not kept pace with the dramatic 
+                  increase in threats, and the government has failed to adequately condemn anti-Semitism at 
+                  pro-Hamas rallies across Canada.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
           <div className="bg-white/10 rounded-lg p-1 inline-flex">
@@ -458,7 +505,9 @@ export default function AnalysisPage() {
                                   ? 'border border-red-500/30'
                                   : isChurchBurningsCategory
                                     ? 'border border-amber-500/30'
-                                    : ''
+                                    : isAntiSemitismCategory
+                                      ? 'border border-blue-500/30'
+                                      : ''
                     }`}
                   >
                     <DataChart dataset={dataset} type={chartType} />

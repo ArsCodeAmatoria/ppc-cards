@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock, Globe, Church } from 'lucide-react';
+import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock, Globe, Church, Star } from 'lucide-react';
 import { categories } from '@/data/policies';
 import { PolicyCard } from '@/components/PolicyCard';
 
@@ -672,6 +672,94 @@ export default function Home() {
                     </div>
                     <div className="text-white/80 text-xs">
                       Source: Compiled from police reports, news sources, and religious organization records
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Anti-Semitism Section */}
+      <section className="w-full py-16 bg-gradient-to-r from-purple-800 to-blue-800">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/2">
+                <div className="flex items-center gap-2 mb-4">
+                  <Star className="h-6 w-6 text-blue-400" />
+                  <h3 className="text-xl font-bold text-white">Rising Anti-Semitism Crisis</h3>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Jewish Canadians Under Threat
+                </h2>
+                <p className="text-white/80 mb-6">
+                  Anti-Semitic incidents have increased by 379% since 2015, with a dramatic surge in 2023 
+                  following the October 7 Hamas attacks. Despite Jewish Canadians now being the most targeted 
+                  religious group, the Liberal government's response has been inadequate.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-blue-500/20 p-1 rounded-full mt-1">
+                      <span className="text-blue-400 font-bold">853</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Anti-Semitic Incidents</h4>
+                      <p className="text-white/70 text-sm">Reported in 2023 alone</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-blue-500/20 p-1 rounded-full mt-1">
+                      <span className="text-blue-400 font-bold">408%</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Increase in Violent Attacks</h4>
+                      <p className="text-white/70 text-sm">Since 2015 under Liberal governance</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <Link 
+                  href="/analysis" 
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  View Full Analysis
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+              
+              <div className="md:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-[4/3] bg-gradient-to-br from-purple-700/50 to-blue-800/50 rounded-xl overflow-hidden p-4">
+                  <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                  <div className="h-full flex flex-col">
+                    <div className="bg-white/10 rounded-lg p-3 mb-3">
+                      <h4 className="text-white font-medium text-sm mb-1">Anti-Semitic Incidents in Canada</h4>
+                      <div className="h-40 relative">
+                        <div className="absolute bottom-0 left-0 w-[10%] h-[21%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[12%] w-[10%] h-[26%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[24%] w-[10%] h-[29%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[36%] w-[10%] h-[40%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[48%] w-[10%] h-[36%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[60%] w-[10%] h-[39%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[72%] w-[10%] h-[47%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[84%] w-[10%] h-[58%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[96%] w-[10%] h-[100%] bg-blue-400 rounded-t"></div>
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-white/60 text-xs">2015</span>
+                        <span className="text-white/60 text-xs">2023</span>
+                      </div>
+                    </div>
+                    <div className="text-white/80 text-xs">
+                      Source: B'nai Brith Canada Annual Audit of Antisemitic Incidents
                     </div>
                   </div>
                 </div>
