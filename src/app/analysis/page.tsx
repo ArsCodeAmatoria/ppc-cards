@@ -1,37 +1,11 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Metadata } from 'next';
 import { motion } from 'framer-motion';
 import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain, Lock, Globe, Church, Star, Flag } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
-
-// Metadata for this page
-export const generateMetadata = (): Metadata => {
-  return {
-    title: "Liberal Failures Analysis | PPC Policy Recommendations",
-    description: "Explore data-driven analysis of Liberal government failures across multiple sectors including economy, immigration, housing, and more.",
-    openGraph: {
-      title: "Liberal Failures Analysis | PPC Policy Recommendations",
-      description: "Explore data-driven analysis of Liberal government failures across multiple sectors including economy, immigration, housing, and more.",
-      images: [
-        {
-          url: "/images/analysis-social-card.jpg",
-          width: 1200,
-          height: 630,
-          alt: "PPC Analysis of Liberal Failures",
-        },
-      ],
-    },
-    twitter: {
-      title: "Liberal Failures Analysis | PPC Policy Recommendations",
-      description: "Explore data-driven analysis of Liberal government failures across multiple sectors including economy, immigration, housing, and more.",
-      images: ["/images/analysis-social-card.jpg"],
-    },
-  };
-};
-
-'use client';
 
 export default function AnalysisPage() {
   const [activeCategory, setActiveCategory] = useState(liberalFailureData[0].id);

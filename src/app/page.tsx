@@ -1,38 +1,12 @@
+'use client';
+
 import React from 'react';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill, Brain, Lock, Globe, Church, Star, Flag } from 'lucide-react';
 import { categories } from '@/data/policies';
 import { PolicyCard } from '@/components/PolicyCard';
-
-// Metadata for this page
-export const generateMetadata = (): Metadata => {
-  return {
-    title: "PPC Policy Recommendations | Home",
-    description: "Explore PPC's policy recommendations and analysis of Liberal failures across economy, immigration, housing, and more sectors in Canada.",
-    openGraph: {
-      title: "PPC Policy Recommendations | Home",
-      description: "Explore PPC's policy recommendations and analysis of Liberal failures across economy, immigration, housing, and more sectors in Canada.",
-      images: [
-        {
-          url: "/images/ppc-social-card.jpg",
-          width: 1200,
-          height: 630,
-          alt: "PPC Policy Recommendations",
-        },
-      ],
-    },
-    twitter: {
-      title: "PPC Policy Recommendations | Home",
-      description: "Explore PPC's policy recommendations and analysis of Liberal failures across economy, immigration, housing, and more sectors in Canada.",
-      images: ["/images/ppc-social-card.jpg"],
-    },
-  };
-};
-
-'use client';
 
 export default function Home() {
   // Animation variants
