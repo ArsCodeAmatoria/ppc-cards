@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy } from 'lucide-react';
+import { ArrowRight, BarChart2, TrendingUp, AlertTriangle, Trophy, Pill } from 'lucide-react';
 import { categories } from '@/data/policies';
 import { PolicyCard } from '@/components/PolicyCard';
 
@@ -232,6 +232,94 @@ export default function Home() {
                     </div>
                     <div className="text-white/80 text-xs">
                       Source: Compiled from sports federation records and competition results
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Drug Crisis Analysis Section */}
+      <section className="w-full py-16 bg-gradient-to-r from-purple-800 to-blue-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm"
+          >
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/2">
+                <div className="flex items-center gap-2 mb-4">
+                  <Pill className="h-6 w-6 text-blue-400" />
+                  <h3 className="text-xl font-bold text-white">Canada's Deadly Drug Crisis</h3>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Liberal "Harm Reduction" Has Failed
+                </h2>
+                <p className="text-white/80 mb-6">
+                  Liberal policies have led to a catastrophic increase in drug overdose deaths, with over 40,000 
+                  Canadians lost since 2015. Despite a 21-fold increase in "safe injection sites," deaths continue 
+                  to rise as the government enables addiction rather than focusing on recovery.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-blue-500/20 p-1 rounded-full mt-1">
+                      <span className="text-blue-400 font-bold">+190%</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Overdose Death Increase</h4>
+                      <p className="text-white/70 text-sm">Deaths have nearly tripled since 2015</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="bg-blue-500/20 p-1 rounded-full mt-1">
+                      <span className="text-blue-400 font-bold">+104%</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Drug-Related Crime</h4>
+                      <p className="text-white/70 text-sm">Crime has more than doubled since 2015</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <Link 
+                  href="/analysis" 
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  View Full Analysis
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </div>
+              
+              <div className="md:w-1/2 flex justify-center">
+                <div className="relative w-full max-w-md aspect-[4/3] bg-gradient-to-br from-purple-700/50 to-blue-900/50 rounded-xl overflow-hidden p-4">
+                  <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                  <div className="h-full flex flex-col">
+                    <div className="bg-white/10 rounded-lg p-3 mb-3">
+                      <h4 className="text-white font-medium text-sm mb-1">Opioid Overdose Deaths</h4>
+                      <div className="h-40 relative">
+                        <div className="absolute bottom-0 left-0 w-[10%] h-[35%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[12%] w-[10%] h-[37%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[24%] w-[10%] h-[50%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[36%] w-[10%] h-[54%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[48%] w-[10%] h-[47%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[60%] w-[10%] h-[76%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[72%] w-[10%] h-[93%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[84%] w-[10%] h-[96%] bg-blue-400 rounded-t"></div>
+                        <div className="absolute bottom-0 left-[96%] w-[10%] h-[100%] bg-blue-400 rounded-t"></div>
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-white/60 text-xs">2015</span>
+                        <span className="text-white/60 text-xs">2023</span>
+                      </div>
+                    </div>
+                    <div className="text-white/80 text-xs">
+                      Source: Public Health Agency of Canada, Special Advisory Committee on the Epidemic of Opioid Overdoses
                     </div>
                   </div>
                 </div>

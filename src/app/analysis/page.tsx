@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
@@ -37,6 +37,9 @@ export default function AnalysisPage() {
     
   // Check if we're in the transgender category
   const isTransgenderCategory = activeCategory === 'transgender';
+  
+  // Check if we're in the drugs category
+  const isDrugsCategory = activeCategory === 'drugs';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -164,6 +167,48 @@ export default function AnalysisPage() {
           </motion.div>
         )}
 
+        {/* Drug Crisis Highlight (only shown for drugs category) */}
+        {isDrugsCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-xl p-6 border border-blue-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-blue-500/20 p-3 rounded-full mt-1">
+                <Pill className="h-8 w-8 text-blue-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Canada's Deadly Drug Crisis</h3>
+                <p className="text-white/80 mb-4">
+                  Liberal "harm reduction" policies have failed to reduce harm, with opioid overdose deaths 
+                  <span className="font-bold text-blue-400"> nearly tripling</span> since 2015. Over 40,000 Canadians have lost their lives 
+                  to the drug crisis while the government focuses on enabling addiction rather than recovery.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-blue-400 mb-1">40,093</p>
+                    <p className="text-white/70 text-sm">Opioid deaths since 2015</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-blue-400 mb-1">+190%</p>
+                    <p className="text-white/70 text-sm">Increase in overdose deaths</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-blue-400 mb-1">42</p>
+                    <p className="text-white/70 text-sm">Safe injection sites (2023)</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  Despite a 21-fold increase in government-funded "safe injection sites" since 2015, overdose deaths 
+                  continue to rise dramatically. The decriminalization of hard drugs in BC has led to increased public 
+                  drug use, crime, and disorder in communities across the province.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
           <div className="bg-white/10 rounded-lg p-1 inline-flex">
@@ -222,7 +267,9 @@ export default function AnalysisPage() {
                         ? 'border border-red-500/30' 
                         : isTransgenderCategory 
                           ? 'border border-pink-500/30' 
-                          : ''
+                          : isDrugsCategory
+                            ? 'border border-blue-500/30'
+                            : ''
                     }`}
                   >
                     <DataChart dataset={dataset} type={chartType} />

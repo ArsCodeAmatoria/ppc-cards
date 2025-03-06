@@ -264,6 +264,77 @@ export const liberalFailureData: AnalysisCategory[] = [
         source: 'Sports federation records and competition databases'
       }
     ]
+  },
+  {
+    id: 'drugs',
+    title: 'Drug Crisis Failures',
+    description: 'Analysis of the escalating drug crisis under Liberal harm reduction policies',
+    datasets: [
+      {
+        label: 'Opioid Overdose Deaths',
+        data: [
+          { year: 2015, value: 2816 },
+          { year: 2016, value: 3023 },
+          { year: 2017, value: 4100 },
+          { year: 2018, value: 4398 },
+          { year: 2019, value: 3823 },
+          { year: 2020, value: 6214 },
+          { year: 2021, value: 7560 },
+          { year: 2022, value: 7818 },
+          { year: 2023, value: 8164 }
+        ],
+        description: 'Opioid overdose deaths have nearly tripled since 2015, with "harm reduction" policies failing to address the root causes of addiction.',
+        source: 'Public Health Agency of Canada, Special Advisory Committee on the Epidemic of Opioid Overdoses'
+      },
+      {
+        label: 'Safe Injection Sites',
+        data: [
+          { year: 2015, value: 2 },
+          { year: 2016, value: 2 },
+          { year: 2017, value: 5 },
+          { year: 2018, value: 12 },
+          { year: 2019, value: 18 },
+          { year: 2020, value: 25 },
+          { year: 2021, value: 32 },
+          { year: 2022, value: 38 },
+          { year: 2023, value: 42 }
+        ],
+        description: 'Despite a dramatic increase in government-funded "safe injection sites," overdose deaths continue to rise, demonstrating the failure of this approach.',
+        source: 'Health Canada, Supervised Consumption Sites: Status of Applications'
+      },
+      {
+        label: 'Drug-Related Crime Index (2015=100)',
+        data: [
+          { year: 2015, value: 100 },
+          { year: 2016, value: 108 },
+          { year: 2017, value: 121 },
+          { year: 2018, value: 135 },
+          { year: 2019, value: 152 },
+          { year: 2020, value: 143 },
+          { year: 2021, value: 168 },
+          { year: 2022, value: 187 },
+          { year: 2023, value: 204 }
+        ],
+        description: 'Drug-related crime has more than doubled since 2015, with decriminalization policies leading to increased open drug use and associated criminal activity.',
+        source: 'Statistics Canada, Uniform Crime Reporting Survey'
+      },
+      {
+        label: 'Homeless Population with Addiction Issues (Thousands)',
+        data: [
+          { year: 2015, value: 42 },
+          { year: 2016, value: 46 },
+          { year: 2017, value: 51 },
+          { year: 2018, value: 58 },
+          { year: 2019, value: 64 },
+          { year: 2020, value: 72 },
+          { year: 2021, value: 83 },
+          { year: 2022, value: 95 },
+          { year: 2023, value: 108 }
+        ],
+        description: 'The number of homeless individuals with addiction issues has more than doubled, as Liberal policies fail to address the connection between addiction and homelessness.',
+        source: 'Employment and Social Development Canada, Point-in-Time Counts'
+      }
+    ]
   }
 ];
 
@@ -305,5 +376,13 @@ export const analysisInsights = {
     "Female athletes have reported feeling unsafe and intimidated in locker rooms and competition spaces",
     "Liberal policies have prioritized gender identity over the safety, privacy, and fair competition for women",
     "Several international sporting bodies have now implemented restrictions that the Liberal government opposes"
+  ],
+  drugs: [
+    "Opioid overdose deaths have nearly tripled since 2015, with over 40,000 Canadians lost to the drug crisis",
+    "Liberal 'harm reduction' policies have failed to reduce harm, with deaths increasing alongside safe injection sites",
+    "Decriminalization of hard drugs in BC has led to increased public drug use, crime, and disorder",
+    "Drug-related crime has more than doubled since 2015, affecting community safety and business viability",
+    "The homeless population with addiction issues has increased by 157%, with inadequate treatment options",
+    "Liberal policies focus on enabling addiction rather than recovery, with minimal funding for treatment beds"
   ]
 }; 
