@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "PPC Policy Explorer",
   description: "Explore PPC policies in an interactive, card-based format",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -22,9 +27,19 @@ export default function RootLayout({
       <body className={`${inter.className} min-h-screen`}>
         <header className="py-6 border-b border-white/10">
           <div className="container mx-auto px-4 flex justify-center">
-            <div className="flex items-center">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="h-12 w-12 relative">
+                <Image 
+                  src="/ppc-logo.svg" 
+                  alt="PPC Logo" 
+                  width={48} 
+                  height={48}
+                  className="object-contain"
+                  priority
+                />
+              </div>
               <div className="text-white font-bold text-2xl">PPC Policy Explorer</div>
-            </div>
+            </Link>
           </div>
         </header>
         <main className="container mx-auto px-4 py-8">
