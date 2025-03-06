@@ -16,7 +16,7 @@ import {
   ChevronRight,
   LandPlot,
   ArrowRight,
-  Bank,
+  PiggyBank,
   DollarSign,
   Leaf,
   HeartPulse,
@@ -76,7 +76,7 @@ const keyIssues = {
           description: 'Canada-first approach to international relations',
           icon: 'MapPin',
           content: ['End financial support for Ukraine', 'Focus on domestic needs first', 'Develop independent foreign policy'],
-          details: 'The PPC believes Canada should avoid foreign entanglements that do not directly benefit Canadians, putting our country's interests first rather than following other nations into conflict.',
+          details: "The PPC believes Canada should avoid foreign entanglements that do not directly benefit Canadians, putting our country's interests first rather than following other nations into conflict.",
           quote: 'Canadian taxpayer dollars should be spent on Canadian priorities.'
         },
         {
@@ -103,7 +103,7 @@ const keyIssues = {
           description: 'Restoring parental rights in education',
           icon: 'School',
           content: ['Remove gender ideology from curriculum', 'Restore parental rights in education', 'Focus on academic excellence'],
-          details: 'We believe parents should be the primary decision-makers in their children's education. Schools should focus on academic excellence rather than social engineering.',
+          details: "We believe parents should be the primary decision-makers in their children's education. Schools should focus on academic excellence rather than social engineering.",
           quote: 'Children should be protected from radical gender ideology in schools.'
         },
         {
@@ -131,7 +131,7 @@ const keyIssues = {
     },
     {
       title: 'Banking Reform',
-      icon: 'Bank',
+      icon: 'PiggyBank',
       description: 'Fighting inflation and financial mismanagement'
     },
     {
@@ -169,7 +169,7 @@ export default function Home() {
       'School': <School size={size} className={className} />,
       'Shield': <Shield size={size} className={className} />,
       'LandPlot': <LandPlot size={size} className={className} />,
-      'Bank': <Bank size={size} className={className} />,
+      'PiggyBank': <PiggyBank size={size} className={className} />,
       'DollarSign': <DollarSign size={size} className={className} />,
       'Leaf': <Leaf size={size} className={className} />,
       'HeartPulse': <HeartPulse size={size} className={className} />,
