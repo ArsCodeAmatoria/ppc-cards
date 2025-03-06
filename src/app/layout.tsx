@@ -28,7 +28,7 @@ export default function RootLayout({
         <header className="py-4 border-b border-white/10 bg-white/5 backdrop-blur-sm">
           <div className="container mx-auto px-4 flex justify-between items-center">
             <Link href="/" className="flex items-center gap-3">
-              <div className="h-12 w-[300px] relative hidden md:block">
+              <div className="h-12 w-[300px] relative">
                 <Image 
                   src="/ppc-banner.png" 
                   alt="PPC Logo" 
@@ -37,19 +37,6 @@ export default function RootLayout({
                   className="object-contain"
                   priority
                 />
-              </div>
-              <div className="flex items-center md:hidden">
-                <div className="h-10 w-10 relative mr-2">
-                  <Image 
-                    src="/ppc-lrg.png" 
-                    alt="PPC Logo" 
-                    width={40} 
-                    height={40}
-                    className="object-contain"
-                    priority
-                  />
-                </div>
-                <div className="text-white font-bold text-lg">PPC Policy Explorer</div>
               </div>
             </Link>
             <nav>

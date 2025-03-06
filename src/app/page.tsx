@@ -288,23 +288,64 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             {keyIssues.subcategories.map((subcategory) => (
               <div key={subcategory.id} className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                {subcategory.policies.map((policy) => (
-                  <Link key={policy.id} href={`/category/${keyIssues.id}/${subcategory.id}/${policy.id}`} className="block mb-8 last:mb-0">
-                    <div className="flex items-center mb-4">
-                      <div className="p-3 rounded-lg bg-purple-900/50 mr-4">
-                        <DynamicIcon iconName={policy.icon} className="w-5 h-5 text-white" />
+                {subcategory.policies.map((policy) => {
+                  if (policy.id === 'cbc') {
+                    // Special formatting for Media Reform card
+                    return (
+                      <Link 
+                        key={policy.id} 
+                        href={`/category/${keyIssues.id}/${subcategory.id}/${policy.id}`} 
+                        className="block mb-8 last:mb-0 bg-white/5 rounded-xl p-6 hover:bg-white/10 transition-all"
+                      >
+                        <h3 className="text-xl font-bold text-white mb-4">Media Reform</h3>
+                        <p className="text-white/90 mb-3">Ending government interference in news media</p>
+                        
+                        <div className="bg-white/5 p-4 rounded-lg mb-4 border border-white/10">
+                          <p className="italic text-white/80 text-sm">"Taxpayers should not fund media that promotes government narratives."</p>
+                        </div>
+                        
+                        <div className="space-y-2 mb-4">
+                          <div className="flex items-start">
+                            <div className="text-purple-400 mr-2">•</div>
+                            <p className="text-white/80">End government funding of CBC</p>
+                          </div>
+                          <div className="flex items-start">
+                            <div className="text-purple-400 mr-2">•</div>
+                            <p className="text-white/80">Privatize public broadcasting</p>
+                          </div>
+                          <div className="flex items-start">
+                            <div className="text-purple-400 mr-2">•</div>
+                            <p className="text-white/80">Support media neutrality</p>
+                          </div>
+                        </div>
+                        
+                        <div className="inline-flex items-center text-sm font-medium text-purple-400 hover:text-purple-300 group">
+                          <span>Read more</span>
+                          <Icons.ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </Link>
+                    );
+                  }
+                  
+                  // Regular policy cards
+                  return (
+                    <Link key={policy.id} href={`/category/${keyIssues.id}/${subcategory.id}/${policy.id}`} className="block mb-8 last:mb-0">
+                      <div className="flex items-center mb-4">
+                        <div className="p-3 rounded-lg bg-purple-900/50 mr-4">
+                          <DynamicIcon iconName={policy.icon} className="w-5 h-5 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold text-white">{policy.title}</h3>
                       </div>
-                      <h3 className="text-xl font-bold text-white">{policy.title}</h3>
-                    </div>
-                    <p className="text-white/80 mb-4 pl-14">{policy.description}</p>
-                    <div className="pl-14">
-                      <div className="inline-flex items-center text-sm font-medium text-white/70 hover:text-white group">
-                        <span>Read more</span>
-                        <Icons.ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <p className="text-white/80 mb-4 pl-14">{policy.description}</p>
+                      <div className="pl-14">
+                        <div className="inline-flex items-center text-sm font-medium text-white/70 hover:text-white group">
+                          <span>Read more</span>
+                          <Icons.ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  );
+                })}
               </div>
             ))}
           </div>
