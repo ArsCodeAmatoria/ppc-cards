@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign, Award, Trophy, Pill, Brain } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
@@ -40,6 +40,9 @@ export default function AnalysisPage() {
   
   // Check if we're in the drugs category
   const isDrugsCategory = activeCategory === 'drugs';
+  
+  // Check if we're in the mental health category
+  const isMentalHealthCategory = activeCategory === 'mentalhealth';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -209,6 +212,48 @@ export default function AnalysisPage() {
           </motion.div>
         )}
 
+        {/* Mental Health Crisis Highlight (only shown for mental health category) */}
+        {isMentalHealthCategory && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-purple-900/50 to-green-900/50 rounded-xl p-6 border border-green-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-green-500/20 p-3 rounded-full mt-1">
+                <Brain className="h-8 w-8 text-green-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Mental Health Crisis</h3>
+                <p className="text-white/80 mb-4">
+                  Despite campaign promises to prioritize mental health, the Liberal government has allowed wait times to 
+                  <span className="font-bold text-green-400"> more than double</span> since 2015. Canadians in crisis now wait over 41 weeks on average 
+                  for mental health services, while youth mental health emergencies have skyrocketed.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-green-400 mb-1">41.2</p>
+                    <p className="text-white/70 text-sm">Weeks average wait time</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-green-400 mb-1">+180%</p>
+                    <p className="text-white/70 text-sm">Increase in youth ER visits</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-green-400 mb-1">$3.6B</p>
+                    <p className="text-white/70 text-sm">Mental health funding gap</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  The mental health funding gap has tripled to $3.6 billion under Liberal governance. Canada now spends only 7% 
+                  of healthcare budgets on mental health, compared to 12% in comparable countries, leaving vulnerable Canadians 
+                  without the support they desperately need.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
           <div className="bg-white/10 rounded-lg p-1 inline-flex">
@@ -269,7 +314,9 @@ export default function AnalysisPage() {
                           ? 'border border-pink-500/30' 
                           : isDrugsCategory
                             ? 'border border-blue-500/30'
-                            : ''
+                            : isMentalHealthCategory
+                              ? 'border border-green-500/30'
+                              : ''
                     }`}
                   >
                     <DataChart dataset={dataset} type={chartType} />
