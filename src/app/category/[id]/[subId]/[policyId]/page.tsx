@@ -1,8 +1,11 @@
+'use client';
+
 import { categories } from '@/data/policies';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import { useParams } from '@/utils/params';
 
 interface PolicyPageProps {
   params: {
@@ -13,77 +16,89 @@ interface PolicyPageProps {
 }
 
 export default function PolicyPage({ params }: PolicyPageProps) {
-  const category = categories.find((c) => c.id === params.id);
-  const subcategory = category?.subcategories.find((s) => s.id === params.subId);
-  const policy = subcategory?.policies.find((p) => p.id === params.policyId);
+  // Use our utility function that handles params safely for current and future Next.js
+  const safeParams = useParams(params);
+  const { id, subId, policyId } = safeParams;
+  
+  const category = categories.find((c) => c.id === id);
+  const subcategory = category?.subcategories.find((s) => s.id === subId);
+  const policy = subcategory?.policies.find((p) => p.id === policyId);
 
-  if (!category || !subcategory || !policy) {
-    notFound();
+  if (!policy || !category || !subcategory) {
+    return notFound();
   }
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="container mx-auto max-w-4xl px-4 py-8">
       <Link 
-        href={`/category/${category.id}/${subcategory.id}`}
-        className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8"
+        href={`/category/${id}/${subId}`}
+        className="inline-flex items-center mb-8 text-ppc-purple hover:text-ppc-purple/70"
       >
-        <ArrowLeft className="w-4 h-4 mr-2" />
+        <ArrowLeft className="mr-2 h-4 w-4" />
         Back to {subcategory.title}
       </Link>
 
-      <motion.article
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-xl p-8 shadow-sm"
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="space-y-6"
       >
-        <h1 className="text-3xl font-bold text-slate-900 mb-4">
+        <motion.h1 variants={item} className="text-4xl font-bold text-ppc-purple">
           {policy.title}
-        </h1>
-        <p className="text-lg text-slate-600 mb-8">
+        </motion.h1>
+        
+        <motion.p variants={item} className="text-lg text-slate-600">
           {policy.description}
-        </p>
+        </motion.p>
 
-        <div className="space-y-6">
+        <motion.div variants={item} className="space-y-4 mt-8">
           {policy.content.map((point, index) => (
-            <motion.div
+            <motion.div 
               key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="flex items-start gap-4"
+              variants={item}
+              className="p-4 bg-ppc-purple/5 rounded-lg border border-ppc-purple/10"
             >
-              <div className="w-2 h-2 rounded-full bg-blue-600 mt-2" />
-              <p className="text-slate-700">{point}</p>
+              <p>{point}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {policy.sources.length > 0 && (
-          <div className="mt-12 pt-8 border-t border-slate-200">
-            <h2 className="text-lg font-semibold text-slate-900 mb-4">Sources</h2>
+        {policy.sources && policy.sources.length > 0 && (
+          <motion.div variants={item} className="mt-12 border-t border-slate-200 pt-8">
+            <h2 className="text-lg font-semibold mb-4 text-ppc-purple">Sources</h2>
             <ul className="space-y-2">
               {policy.sources.map((source, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                >
-                  <a
+                <li key={index}>
+                  <a 
                     href={source}
-                    target="_blank"
+                    target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-blue-600 hover:text-blue-800"
+                    className="inline-flex items-center text-ppc-purple hover:text-ppc-purple/70"
                   >
-                    <span className="mr-2">Source {index + 1}</span>
-                    <ExternalLink className="w-4 h-4" />
+                    Source {index + 1} <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         )}
-      </motion.article>
+      </motion.div>
     </div>
   );
 } 

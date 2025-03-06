@@ -1,9 +1,12 @@
+'use client';
+
 import { categories } from '@/data/policies';
 import PolicyCard from '@/components/PolicyCard';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import { useParams } from '@/utils/params';
 
 interface SubCategoryPageProps {
   params: {
@@ -12,7 +15,7 @@ interface SubCategoryPageProps {
   };
 }
 
-const container = {
+const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -22,58 +25,60 @@ const container = {
   }
 };
 
-const item = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 }
 };
 
 export default function SubCategoryPage({ params }: SubCategoryPageProps) {
-  const category = categories.find((c) => c.id === params.id);
-  const subcategory = category?.subcategories.find((s) => s.id === params.subId);
+  // Use our utility function that handles params safely for current and future Next.js
+  const safeParams = useParams(params);
+  const { id, subId } = safeParams;
+  
+  const category = categories.find((c) => c.id === id);
+  const subcategory = category?.subcategories.find((s) => s.id === subId);
 
   if (!category || !subcategory) {
-    notFound();
+    return notFound();
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="container mx-auto max-w-6xl px-4 py-8">
       <Link 
-        href={`/category/${category.id}`}
-        className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8"
+        href={`/category/${id}`}
+        className="inline-flex items-center mb-8 text-ppc-purple hover:text-ppc-purple/70"
       >
-        <ArrowLeft className="w-4 h-4 mr-2" />
+        <ArrowLeft className="mr-2 h-4 w-4" />
         Back to {category.title}
       </Link>
 
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-12"
-      >
-        <h1 className="text-4xl font-bold text-slate-900 mb-4">
-          {subcategory.title}
-        </h1>
-        <p className="text-lg text-slate-600">
-          {subcategory.description}
-        </p>
-      </motion.div>
-
-      <motion.div
-        variants={container}
+        variants={containerVariants}
         initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        animate="show" 
+        className="space-y-6"
       >
-        {subcategory.policies.map((policy) => (
-          <motion.div key={policy.id} variants={item}>
+        <motion.h1 variants={itemVariants} className="text-4xl font-bold text-ppc-purple">
+          {subcategory.title}
+        </motion.h1>
+        
+        <motion.p variants={itemVariants} className="text-lg text-slate-600 mb-8">
+          {subcategory.description}
+        </motion.p>
+
+        <motion.div 
+          variants={itemVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {subcategory.policies.map((policy) => (
             <PolicyCard
+              key={policy.id}
               title={policy.title}
               description={policy.description}
-              icon={policy.icon}
-              href={`/category/${category.id}/${subcategory.id}/${policy.id}`}
+              href={`/category/${id}/${subId}/${policy.id}`}
             />
-          </motion.div>
-        ))}
+          ))}
+        </motion.div>
       </motion.div>
     </div>
   );
