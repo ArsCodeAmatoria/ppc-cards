@@ -71,7 +71,7 @@ const keyIssues = {
           quote: 'Canadians deserve honest, evidence-based discussions on all indigenous issues.'
         },
         {
-          id: 'ukraine',
+          id: 'foreign-policy',
           title: 'Foreign Policy Focus',
           description: 'Canada-first approach to international relations',
           icon: 'MapPin',
@@ -235,7 +235,7 @@ export default function Home() {
                 className="w-64 h-64 relative"
               >
                 <Image 
-                  src="/ppc-from-jpg.svg" 
+                  src="/ppc-official.svg" 
                   alt="PPC Logo" 
                   width={256} 
                   height={256}

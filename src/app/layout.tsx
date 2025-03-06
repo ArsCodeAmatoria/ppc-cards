@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "PPC Policy Explorer",
   description: "Explore PPC policies in an interactive, card-based format",
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon-new.svg',
   },
 };
 
@@ -25,23 +25,43 @@ export default function RootLayout({
         <meta name="theme-color" content="#442d7b" />
       </head>
       <body className={`${inter.className} min-h-screen`}>
-        <header className="py-6 border-b border-white/10">
-          <div className="container mx-auto px-4 flex justify-center">
+        <header className="py-4 border-b border-white/10 bg-white/5 backdrop-blur-sm">
+          <div className="container mx-auto px-4 flex justify-between items-center">
             <Link href="/" className="flex items-center gap-3">
-              <div className="flex items-center justify-center">
-                <div className="h-16 w-16 relative">
+              <div className="h-12 w-[300px] relative hidden md:block">
+                <Image 
+                  src="/ppc-horizontal.svg" 
+                  alt="PPC Logo" 
+                  width={300} 
+                  height={80}
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="flex items-center md:hidden">
+                <div className="h-10 w-10 relative mr-2">
                   <Image 
-                    src="/ppc-from-jpg.svg" 
+                    src="/ppc-official.svg" 
                     alt="PPC Logo" 
-                    width={64} 
-                    height={64}
+                    width={40} 
+                    height={40}
                     className="object-contain"
                     priority
                   />
                 </div>
+                <div className="text-white font-bold text-lg">PPC Policy Explorer</div>
               </div>
-              <div className="text-white font-bold text-2xl">PPC Policy Explorer</div>
             </Link>
+            <nav>
+              <ul className="flex gap-6">
+                <li>
+                  <Link href="/#key-issues" className="text-white/80 hover:text-white text-sm">Key Issues</Link>
+                </li>
+                <li>
+                  <Link href="/#categories" className="text-white/80 hover:text-white text-sm">Policy Categories</Link>
+                </li>
+              </ul>
+            </nav>
           </div>
         </header>
         <main className="container mx-auto px-4 py-8">
