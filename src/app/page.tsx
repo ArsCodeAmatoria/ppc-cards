@@ -3,8 +3,10 @@
 import { categories } from '@/data/policies';
 import PolicyCard from '@/components/PolicyCard';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
+import MotionExample from '@/components/MotionExample';
 
-const container = {
+const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -14,36 +16,51 @@ const container = {
   }
 };
 
-const item = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0 }
 };
 
 export default function Home() {
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="container mx-auto max-w-6xl px-4 py-8">
       <div className="text-center mb-12">
-        <div className="py-8 bg-ppc-purple/10 rounded-lg mb-8">
-          <h1 className="text-4xl font-bold text-ppc-purple mb-4">
-            PPC Policy Explorer
-          </h1>
-          <p className="text-lg text-slate-600">
-            Explore the People's Party of Canada's policies through an interactive guide
-          </p>
-        </div>
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-4xl font-bold text-ppc-purple mb-4"
+        >
+          PPC Policy Explorer
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-lg text-slate-600 max-w-2xl mx-auto"
+        >
+          Explore policies, positions, and platforms through an interactive card-based interface.
+        </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
         {categories.map((category) => (
-          <PolicyCard
-            key={category.id}
-            title={category.title}
-            description={category.description}
-            icon={category.icon}
-            href={`/category/${category.id}`}
-          />
+          <motion.div key={category.id} variants={itemVariants}>
+            <PolicyCard
+              title={category.title}
+              description={category.description}
+              icon={category.icon}
+              href={`/category/${category.id}`}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
+
+      <MotionExample title="Powered by Motion.dev" />
     </div>
   );
 }
