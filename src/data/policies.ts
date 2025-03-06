@@ -215,6 +215,130 @@ export const categories: Category[] = [
             }
           }
         ]
+      },
+      {
+        id: 'foreign-policy',
+        title: 'Foreign Policy',
+        description: 'Canada-first approach to international relations',
+        policies: [
+          {
+            id: 'no-foreign-wars',
+            title: 'End Foreign War Funding',
+            description: 'Stop sending Canadian tax dollars to foreign conflicts',
+            icon: 'Shield',
+            content: [
+              'Canada has sent billions to Ukraine with little accountability',
+              'Foreign conflicts drain resources needed for domestic priorities',
+              'Military aid often prolongs conflicts rather than resolving them',
+              'Canadian taxpayers should not fund foreign wars'
+            ],
+            details: {
+              keyPoints: [
+                'End all financial and military aid to Ukraine and other foreign conflicts',
+                'Redirect funds to domestic priorities like healthcare and infrastructure',
+                'Maintain a position of armed neutrality in global affairs',
+                'Focus on diplomatic solutions rather than military interventions'
+              ],
+              sections: [
+                {
+                  title: 'The Problem',
+                  content: 'Canada has committed billions of dollars to Ukraine and other foreign conflicts, despite facing significant domestic challenges. These funds are often sent with minimal oversight or accountability, and there is little evidence that they are achieving their stated objectives. Meanwhile, Canadians struggle with rising costs of living, healthcare shortages, and crumbling infrastructure.'
+                },
+                {
+                  title: 'The Solution',
+                  content: 'A PPC government would immediately end all financial and military aid to Ukraine and other foreign conflicts. We would redirect these funds to address pressing domestic needs and adopt a policy of armed neutrality in global affairs, focusing on diplomatic solutions rather than military interventions.'
+                },
+                {
+                  title: 'Benefits',
+                  content: 'This approach would save Canadian taxpayers billions of dollars, allow us to focus on solving domestic problems, reduce our involvement in conflicts that do not directly threaten our security, and restore our reputation as a peaceful nation that respects the sovereignty of other countries.'
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        id: 'government-reform',
+        title: 'Government Reform',
+        description: 'Making government smaller, more efficient, and accountable',
+        policies: [
+          {
+            id: 'department-efficiency',
+            title: 'Department of Government Efficiency (DOGE)',
+            description: 'Creating a new department to reduce bureaucracy and waste',
+            icon: 'Scissors',
+            content: [
+              'Government bureaucracy has grown exponentially in recent decades',
+              'Overlapping departments and agencies waste taxpayer money',
+              'Inefficient processes create unnecessary red tape for citizens and businesses',
+              'A dedicated department is needed to streamline government operations'
+            ],
+            details: {
+              keyPoints: [
+                'Establish the Department of Government Efficiency (DOGE)',
+                'Mandate 10% annual reduction in bureaucracy and regulations',
+                'Eliminate redundant departments and agencies',
+                'Implement performance metrics for all government services'
+              ],
+              sections: [
+                {
+                  title: 'The Problem',
+                  content: 'The Canadian federal government has grown into a bloated bureaucracy with hundreds of departments, agencies, and crown corporations, many with overlapping mandates. This has led to inefficiency, waste, and a regulatory burden that stifles economic growth and innovation. Taxpayers are funding a government that has become too large, too complex, and too expensive.'
+                },
+                {
+                  title: 'The Solution',
+                  content: 'A PPC government would establish the Department of Government Efficiency (DOGE), with a mandate to reduce the size and cost of government. DOGE would conduct comprehensive audits of all federal departments, eliminate redundancies, streamline processes, and cut unnecessary regulations. It would be required to achieve a minimum 10% reduction in government spending and regulations annually.'
+                },
+                {
+                  title: 'Implementation',
+                  content: 'DOGE would be staffed by efficiency experts from the private sector, not career bureaucrats. It would report directly to the Prime Minister and have the authority to recommend the elimination or consolidation of any government entity. All departments would be required to justify their budgets and staffing levels annually, with a zero-based budgeting approach.'
+                },
+                {
+                  title: 'Benefits',
+                  content: 'This initiative would save taxpayers billions of dollars, reduce the regulatory burden on citizens and businesses, improve service delivery, and create a more responsive and accountable government. By cutting waste and bureaucracy, we can reduce taxes while maintaining essential services.'
+                }
+              ]
+            }
+          },
+          {
+            id: 'reduce-socialism',
+            title: 'Reducing Socialist Policies',
+            description: 'Limiting government intervention in the economy and society',
+            icon: 'TrendingDown',
+            content: [
+              'Socialist policies have expanded government control over the economy',
+              'High taxes and regulations stifle economic growth and personal freedom',
+              'Government dependency has replaced self-reliance for many Canadians',
+              'Free markets and individual responsibility create prosperity'
+            ],
+            details: {
+              keyPoints: [
+                'Reduce government spending as a percentage of GDP',
+                'Lower taxes for all Canadians and businesses',
+                'Privatize crown corporations and government services where possible',
+                'Eliminate corporate welfare and industry subsidies'
+              ],
+              sections: [
+                {
+                  title: 'The Problem',
+                  content: 'Canada has gradually adopted more socialist policies over the decades, with government spending now representing a large percentage of GDP. High taxes, extensive regulations, and government intervention in nearly every aspect of the economy have reduced economic freedom, stifled innovation, and created a culture of dependency rather than self-reliance.'
+                },
+                {
+                  title: 'The Solution',
+                  content: 'A PPC government would implement a comprehensive plan to reduce socialist policies and restore free market principles. This would include significant tax cuts, privatization of crown corporations, elimination of corporate welfare and industry subsidies, and a systematic reduction in the size and scope of government.'
+                },
+                {
+                  title: 'Implementation',
+                  content: 'We would set a target to reduce government spending as a percentage of GDP by 5% in our first term. We would implement a flat tax system, privatize CBC, Canada Post, and other crown corporations, end all business subsidies, and return responsibility for many programs to the provinces or the private sector.'
+                },
+                {
+                  title: 'Benefits',
+                  content: 'Reducing socialist policies would lead to stronger economic growth, more job creation, greater innovation, lower costs for goods and services, and a restoration of the values of personal responsibility and self-reliance that built Canada. It would also reduce government debt and ensure fiscal sustainability for future generations.'
+                }
+              ]
+            }
+          }
+        ]
       }
     ]
   },
@@ -280,6 +404,96 @@ export const categories: Category[] = [
                 {
                   title: 'Economic Impact',
                   content: 'Eliminating the capital gains tax would lead to increased investment in Canadian businesses, job creation, and economic growth. It would also simplify the tax system and reduce the resources needed for compliance and administration.'
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'social-issues',
+    title: 'Social Issues',
+    description: 'Policies addressing cultural and social challenges',
+    subcategories: [
+      {
+        id: 'identity-politics',
+        title: 'Identity Politics',
+        description: 'Opposing divisive ideologies and promoting national unity',
+        policies: [
+          {
+            id: 'end-dei-funding',
+            title: 'End DEI Funding',
+            description: 'Eliminating taxpayer funding for diversity, equity, and inclusion programs',
+            icon: 'Ban',
+            content: [
+              'DEI programs promote division based on immutable characteristics',
+              'Billions of taxpayer dollars are spent on ineffective DEI initiatives',
+              'Merit and individual achievement should be the basis for advancement',
+              'True equality means equal treatment, not special treatment'
+            ],
+            details: {
+              keyPoints: [
+                'End all government funding for DEI programs and departments',
+                'Eliminate DEI requirements for government grants and contracts',
+                'Prohibit racial and gender quotas in public institutions',
+                'Promote a merit-based approach in all government operations'
+              ],
+              sections: [
+                {
+                  title: 'The Problem',
+                  content: 'The federal government spends billions of dollars annually on diversity, equity, and inclusion (DEI) programs that promote division rather than unity. These programs categorize Canadians based on immutable characteristics like race and gender, creating a hierarchy of victimhood that undermines social cohesion. DEI initiatives have infiltrated every level of government, education, and even private businesses through government mandates.'
+                },
+                {
+                  title: 'The Solution',
+                  content: 'A PPC government would immediately end all federal funding for DEI programs, departments, and initiatives. We would eliminate DEI requirements for government grants, contracts, and funding. We would prohibit the use of racial and gender quotas in hiring, promotion, and admissions in all public institutions and government-funded organizations.'
+                },
+                {
+                  title: 'Implementation',
+                  content: 'We would audit all federal departments to identify and eliminate DEI spending, disband the Department of Women and Gender Equality, remove DEI criteria from all government funding applications, and implement strict merit-based hiring practices across the federal government.'
+                },
+                {
+                  title: 'Benefits',
+                  content: 'This policy would save taxpayers billions of dollars, promote national unity by treating all Canadians equally, restore merit as the basis for advancement, and end the divisive practice of categorizing citizens by race, gender, and other immutable characteristics. It would also improve efficiency and effectiveness in government by ensuring the most qualified people are hired and promoted.'
+                }
+              ]
+            }
+          },
+          {
+            id: 'end-trans-funding',
+            title: 'End Transgender Programming Funding',
+            description: 'Stopping taxpayer funding for gender ideology promotion',
+            icon: 'Slash',
+            content: [
+              'Millions of taxpayer dollars fund transgender ideology promotion',
+              'Children are being influenced by government-funded gender programs',
+              'Biological reality should be recognized in government policy',
+              'Parents should determine what values their children are taught'
+            ],
+            details: {
+              keyPoints: [
+                'End all government funding for transgender programming and advocacy',
+                'Remove gender ideology from school curricula and public institutions',
+                'Protect children from irreversible medical interventions',
+                'Defend parents\' rights to raise their children according to their values'
+              ],
+              sections: [
+                {
+                  title: 'The Problem',
+                  content: 'The federal government spends millions of dollars promoting transgender ideology through various programs, grants, and initiatives. This includes funding for advocacy organizations, educational materials that present gender ideology as fact, and medical interventions that can have irreversible effects, particularly on children. These programs often operate without parental knowledge or consent.'
+                },
+                {
+                  title: 'The Solution',
+                  content: 'A PPC government would end all federal funding for transgender programming, advocacy, and medical interventions. We would ensure that government policies recognize biological reality and protect children from harmful ideologies and irreversible medical procedures. We would defend parents\' rights to determine what values their children are taught.'
+                },
+                {
+                  title: 'Implementation',
+                  content: 'We would audit all federal departments to identify and eliminate funding for transgender programming, remove gender ideology from federal educational materials and guidelines, prohibit the use of federal funds for gender-related medical interventions for minors, and implement policies that respect biological differences in areas such as sports, prisons, and shelters.'
+                },
+                {
+                  title: 'Benefits',
+                  content: 'This policy would protect children from harmful ideologies and medical interventions, respect the role of parents in raising their children, save taxpayer money, and ensure that government policies are based on biological reality rather than ideology. It would also help preserve women\'s spaces, sports, and rights that are being eroded by gender ideology.'
                 }
               ]
             }
