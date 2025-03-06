@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, BarChart2, LineChart, Info } from 'lucide-react';
+import { ChevronDown, BarChart2, LineChart, Info, AlertTriangle, DollarSign } from 'lucide-react';
 import { liberalFailureData, analysisInsights } from '@/data/analysis/liberalFailures';
 import { DataChart } from '@/components/analysis/DataChart';
 import { InsightsList } from '@/components/analysis/InsightsList';
@@ -29,6 +29,11 @@ export default function AnalysisPage() {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };
+
+  // Get Ukraine spending data if in economy category
+  const ukraineData = activeCategory === 'economy' 
+    ? category?.datasets.find(dataset => dataset.label.includes('Ukraine'))
+    : null;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-900 to-purple-800">
@@ -72,6 +77,47 @@ export default function AnalysisPage() {
             </button>
           ))}
         </div>
+
+        {/* Ukraine Spending Highlight (only shown for economy category) */}
+        {ukraineData && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-12 bg-gradient-to-r from-red-900/50 to-purple-900/50 rounded-xl p-6 border border-red-500/30"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-red-500/20 p-3 rounded-full mt-1">
+                <DollarSign className="h-8 w-8 text-red-400" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">Ukraine Spending Crisis</h3>
+                <p className="text-white/80 mb-4">
+                  While Canadians struggle with housing affordability, healthcare wait times, and inflation, 
+                  the Liberal government has committed over <span className="font-bold text-red-400">$18 billion</span> in 
+                  aid to Ukraine since 2022, with spending projected to increase to nearly $9 billion in 2024 alone.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-red-400 mb-1">$8.9B</p>
+                    <p className="text-white/70 text-sm">Projected Ukraine aid in 2024</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-red-400 mb-1">$18.1B</p>
+                    <p className="text-white/70 text-sm">Total Ukraine aid since 2022</p>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4">
+                    <p className="text-3xl font-bold text-red-400 mb-1">$500</p>
+                    <p className="text-white/70 text-sm">Cost per Canadian taxpayer</p>
+                  </div>
+                </div>
+                <p className="text-white/80 text-sm">
+                  This spending comes at a time when 6.5 million Canadians lack a family doctor, housing prices 
+                  have increased by nearly 60%, and inflation has eroded purchasing power for working families.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
 
         {/* Chart type toggle */}
         <div className="flex justify-end mb-6">
@@ -126,7 +172,7 @@ export default function AnalysisPage() {
                   <motion.div 
                     key={dataset.label} 
                     variants={item}
-                    className="bg-white/5 rounded-xl p-6"
+                    className={`bg-white/5 rounded-xl p-6 ${dataset.label.includes('Ukraine') ? 'border border-red-500/30' : ''}`}
                   >
                     <DataChart dataset={dataset} type={chartType} />
                   </motion.div>

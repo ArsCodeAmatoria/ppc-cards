@@ -27,6 +27,23 @@ export const liberalFailureData: AnalysisCategory[] = [
     description: 'Analysis of economic performance under Liberal governance',
     datasets: [
       {
+        label: 'Ukraine Aid (Billions CAD)',
+        data: [
+          { year: 2015, value: 0.0 },
+          { year: 2016, value: 0.0 },
+          { year: 2017, value: 0.0 },
+          { year: 2018, value: 0.0 },
+          { year: 2019, value: 0.0 },
+          { year: 2020, value: 0.0 },
+          { year: 2021, value: 0.0 },
+          { year: 2022, value: 3.4 },
+          { year: 2023, value: 5.8 },
+          { year: 2024, value: 8.9 }
+        ],
+        description: 'The Liberal government has committed over $18 billion in aid to Ukraine since 2022, while neglecting domestic priorities like healthcare, housing, and veterans\' services.',
+        source: 'Department of Finance Canada, Global Affairs Canada'
+      },
+      {
         label: 'Federal Debt (Billions CAD)',
         data: [
           { year: 2015, value: 612.3 },
@@ -198,6 +215,7 @@ export const liberalFailureData: AnalysisCategory[] = [
 // Analysis insights for each category
 export const analysisInsights = {
   economy: [
+    "Over $18 billion committed to Ukraine since 2022 while Canadians struggle with housing and healthcare crises",
     "Federal debt has nearly doubled since 2015, with the debt-to-GDP ratio reaching historic highs",
     "Inflation has reached 40-year highs under Liberal monetary and fiscal policies",
     "Housing affordability has deteriorated dramatically with prices increasing nearly 60% nationally",
