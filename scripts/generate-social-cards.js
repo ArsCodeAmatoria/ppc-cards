@@ -22,6 +22,21 @@ async function generateSocialCards() {
   const page = await browser.newPage();
   
   try {
+    // Generate logo on purple background social card
+    console.log('Generating logo on purple background social card...');
+    await page.goto('http://localhost:3000/social-card/logo-purple', { waitUntil: 'networkidle0' });
+    await page.waitForSelector('.min-h-screen', { timeout: 5000 });
+    
+    // Wait a bit for any animations to complete
+    await page.waitForTimeout(1000);
+    
+    await page.screenshot({
+      path: path.join(imagesDir, 'ppc-logo-purple-bg.jpg'),
+      quality: 100,
+      type: 'jpeg',
+    });
+    console.log('Logo on purple background social card generated successfully!');
+    
     // Generate main social card
     console.log('Generating main social card...');
     await page.goto('http://localhost:3000/social-card', { waitUntil: 'networkidle0' });

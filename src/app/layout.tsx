@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "PPC Policy Recommendations",
     images: [
       {
-        url: "/images/ppc-social-card.jpg",
+        url: "/images/ppc-logo-purple-bg.jpg",
         width: 1200,
         height: 630,
         alt: "PPC Policy Recommendations",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "PPC Policy Recommendations",
     description: "Explore PPC's data-driven analysis of Liberal failures and policy recommendations for a stronger Canada.",
     creator: "@peoplespca",
-    images: ["/images/ppc-social-card.jpg"],
+    images: ["/images/ppc-logo-purple-bg.jpg"],
   },
 };
 

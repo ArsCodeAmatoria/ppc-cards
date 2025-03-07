@@ -4,10 +4,11 @@ This document provides instructions on how to generate social media card images 
 
 ## Available Social Cards
 
-The project includes two social card designs:
+The project includes three social card designs:
 
-1. **Main Social Card** - Used for the home page and general sharing
-2. **Analysis Social Card** - Specifically for the Liberal Failures Analysis page
+1. **Logo on Purple Background** - Primary card used for social sharing with Twitter Summary Card with Large Image
+2. **Main Social Card** - Used for the home page with detailed statistics
+3. **Analysis Social Card** - Specifically for the Liberal Failures Analysis page
 
 ## How to Generate the Images
 
@@ -19,6 +20,7 @@ The project includes two social card designs:
    ```
 
 2. Navigate to the social card pages:
+   - Logo on Purple: http://localhost:3000/social-card/logo-purple
    - Main card: http://localhost:3000/social-card
    - Analysis card: http://localhost:3000/social-card/analysis
 
@@ -28,6 +30,7 @@ The project includes two social card designs:
    - On Mac: Use Command+Shift+4 to take a custom screenshot
 
 4. Save the screenshots as:
+   - `public/images/ppc-logo-purple-bg.jpg`
    - `public/images/ppc-social-card.jpg`
    - `public/images/analysis-social-card.jpg`
 
@@ -40,58 +43,14 @@ For automated generation, you can use Puppeteer to programmatically take screens
    npm install puppeteer
    ```
 
-2. Create a script file `scripts/generate-social-cards.js`:
-   ```javascript
-   const puppeteer = require('puppeteer');
-   const path = require('path');
-   
-   async function generateSocialCards() {
-     const browser = await puppeteer.launch();
-     const page = await browser.newPage();
-     
-     // Set viewport to match OG image dimensions
-     await page.setViewport({
-       width: 1200,
-       height: 630,
-       deviceScaleFactor: 1,
-     });
-     
-     // Generate main social card
-     await page.goto('http://localhost:3000/social-card');
-     await page.waitForSelector('.min-h-screen');
-     await page.screenshot({
-       path: path.join(__dirname, '../public/images/ppc-social-card.jpg'),
-       quality: 100,
-     });
-     
-     // Generate analysis social card
-     await page.goto('http://localhost:3000/social-card/analysis');
-     await page.waitForSelector('.min-h-screen');
-     await page.screenshot({
-       path: path.join(__dirname, '../public/images/analysis-social-card.jpg'),
-       quality: 100,
-     });
-     
-     await browser.close();
-     console.log('Social card images generated successfully!');
-   }
-   
-   generateSocialCards().catch(console.error);
-   ```
+2. Use the script file `scripts/generate-social-cards.js` which is already set up to generate all three social cards.
 
-3. Add a script to package.json:
-   ```json
-   "scripts": {
-     "generate-social-cards": "node scripts/generate-social-cards.js"
-   }
-   ```
-
-4. Run the development server in one terminal:
+3. Run the development server in one terminal:
    ```
    npm run dev
    ```
 
-5. Run the generation script in another terminal:
+4. Run the generation script in another terminal:
    ```
    npm run generate-social-cards
    ```
@@ -104,7 +63,7 @@ The social card images are referenced in the metadata configuration:
 - Home page metadata in `src/app/metadata.ts`
 - Analysis page metadata in `src/app/analysis/metadata.ts`
 
-These metadata configurations include Open Graph and Twitter Card metadata that reference the social card images.
+These metadata configurations include Open Graph and Twitter Card metadata that reference the social card images. The site is configured to use Twitter Summary Card with Large Image format for optimal display on Twitter.
 
 ## Domain Configuration
 
@@ -112,7 +71,7 @@ The metadata is configured to use the domain `https://www.backtest.ca`. If the d
 
 1. The `metadataBase` URL in `src/app/layout.tsx`
 2. The OpenGraph URLs in `src/app/metadata.ts` and `src/app/analysis/metadata.ts`
-3. The displayed URLs on the social cards in `src/components/SocialCard.tsx` and `src/components/AnalysisSocialCard.tsx`
+3. The displayed URLs on the social cards in `src/components/LogoPurpleBgCard.tsx`, `src/components/SocialCard.tsx` and `src/components/AnalysisSocialCard.tsx`
 
 ## Testing Social Media Cards
 

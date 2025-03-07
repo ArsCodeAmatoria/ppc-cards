@@ -499,6 +499,51 @@ export const categories: Category[] = [
             }
           }
         ]
+      },
+      {
+        id: 'gun-rights',
+        title: 'Gun Rights',
+        description: 'Protecting the rights of law-abiding gun owners',
+        policies: [
+          {
+            id: 'reverse-gun-control',
+            title: 'Reverse Extreme Gun Control Laws',
+            description: 'Repeal ineffective gun bans and respect the rights of legal gun owners',
+            icon: 'Shield',
+            content: [
+              'Liberal gun bans target law-abiding citizens, not criminals',
+              'Over $1 billion wasted on gun buyback programs that don\'t reduce crime',
+              'Rural Canadians and indigenous communities rely on firearms for hunting and protection',
+              'Evidence shows that legal gun ownership does not increase violent crime'
+            ],
+            details: {
+              keyPoints: [
+                'Repeal Bill C-21 and all "assault-style" weapon bans',
+                'End the wasteful gun buyback program',
+                'Simplify the firearms classification system',
+                'Focus law enforcement resources on illegal guns and gang violence'
+              ],
+              sections: [
+                {
+                  title: 'The Problem',
+                  content: 'The Liberal government has implemented increasingly restrictive gun control measures that primarily affect law-abiding gun owners while doing nothing to address the real sources of gun violence. Bills C-21 and C-71, along with Order in Council bans, have prohibited thousands of firearms based on their appearance rather than function, turning law-abiding citizens into criminals overnight and wasting billions on ineffective buyback programs.'
+                },
+                {
+                  title: 'The Solution',
+                  content: 'A PPC government would immediately repeal Bill C-21 and all "assault-style" weapon bans. We would end the wasteful gun buyback program and redirect those resources to border security to stop illegal gun smuggling and to law enforcement efforts targeting gang violence. We would simplify the firearms classification system to focus on function rather than appearance and streamline the licensing process while maintaining necessary safety checks.'
+                },
+                {
+                  title: 'Implementation',
+                  content: 'We would introduce legislation to repeal Bills C-21 and C-71, cancel the Order in Council prohibitions, and establish a simplified classification system developed in consultation with firearms experts, sport shooters, hunters, and law enforcement. We would also create a Firearms Owners Advisory Committee to ensure that future firearms legislation is evidence-based and respects the rights of legal gun owners.'
+                },
+                {
+                  title: 'Benefits',
+                  content: 'This approach would respect the rights of over 2.2 million licensed gun owners in Canada, save billions in taxpayer money, preserve important cultural and recreational activities, protect the livelihoods of those who depend on hunting, and allow law enforcement to focus on the real sources of gun violence: illegal firearms, gangs, and criminals. It would also restore property rights and due process for law-abiding Canadians.'
+                }
+              ]
+            }
+          }
+        ]
       }
     ]
   }
