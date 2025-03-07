@@ -61,7 +61,7 @@ export const AnalysisSocialCard: React.FC = () => {
         
         {/* URL */}
         <div className="absolute bottom-8 text-white/70 text-xl">
-          ppc-policy.ca/analysis
+          backtest.ca/analysis
         </div>
       </div>
     </div>

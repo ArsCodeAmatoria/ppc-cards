@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import * as Icons from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 
 interface PolicyCardProps {
   title: string;
@@ -12,7 +13,11 @@ interface PolicyCardProps {
 
 export function PolicyCard({ title, description, icon, href }: PolicyCardProps) {
   // Dynamically get the icon component if provided
-  const IconComponent = icon ? Icons[icon as keyof typeof Icons] : null;
+  let IconComponent: LucideIcon | null = null;
+  
+  if (icon && icon in Icons) {
+    IconComponent = Icons[icon as keyof typeof Icons] as LucideIcon;
+  }
 
   return (
     <Link

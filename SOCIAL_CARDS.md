@@ -101,10 +101,18 @@ For automated generation, you can use Puppeteer to programmatically take screens
 The social card images are referenced in the metadata configuration:
 
 - Root layout metadata in `src/app/layout.tsx`
-- Home page metadata in `src/app/page.tsx`
-- Analysis page metadata in `src/app/analysis/page.tsx`
+- Home page metadata in `src/app/metadata.ts`
+- Analysis page metadata in `src/app/analysis/metadata.ts`
 
 These metadata configurations include Open Graph and Twitter Card metadata that reference the social card images.
+
+## Domain Configuration
+
+The metadata is configured to use the domain `https://www.backtest.ca`. If the domain changes, you'll need to update:
+
+1. The `metadataBase` URL in `src/app/layout.tsx`
+2. The OpenGraph URLs in `src/app/metadata.ts` and `src/app/analysis/metadata.ts`
+3. The displayed URLs on the social cards in `src/components/SocialCard.tsx` and `src/components/AnalysisSocialCard.tsx`
 
 ## Testing Social Media Cards
 

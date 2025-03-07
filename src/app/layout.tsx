@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "PPC Policy Recommendations",
   description: "Learn about PPC policies and recommendations for Canada's future. Discover how Liberal failures have impacted Canadians and explore data-driven solutions.",
-  metadataBase: new URL('https://ppc-policy.ca'),
+  metadataBase: new URL('https://www.backtest.ca'),
   keywords: ["PPC", "People's Party of Canada", "Canadian politics", "Liberal failures", "policy recommendations", "Maxime Bernier"],
   authors: [{ name: "People's Party of Canada" }],
   creator: "People's Party of Canada",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_CA",
-    url: "https://ppc-policy.ca",
+    url: "https://www.backtest.ca",
     title: "PPC Policy Recommendations",
     description: "Explore PPC's data-driven analysis of Liberal failures and policy recommendations for a stronger Canada.",
     siteName: "PPC Policy Recommendations",

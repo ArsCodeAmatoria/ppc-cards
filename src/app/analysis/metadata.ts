@@ -8,9 +8,10 @@ export const generateMetadata = (): Metadata => {
     openGraph: {
       title: "Liberal Failures Analysis | PPC Policy Recommendations",
       description: "Explore data-driven analysis of Liberal government failures across multiple sectors including economy, immigration, housing, and more.",
+      url: "https://www.backtest.ca/analysis",
       images: [
         {
-          url: "/images/analysis-social-card.jpg",
+          url: "https://www.backtest.ca/images/analysis-social-card.jpg",
           width: 1200,
           height: 630,
           alt: "PPC Analysis of Liberal Failures",
@@ -20,7 +21,7 @@ export const generateMetadata = (): Metadata => {
     twitter: {
       title: "Liberal Failures Analysis | PPC Policy Recommendations",
       description: "Explore data-driven analysis of Liberal government failures across multiple sectors including economy, immigration, housing, and more.",
-      images: ["/images/analysis-social-card.jpg"],
+      images: ["https://www.backtest.ca/images/analysis-social-card.jpg"],
     },
   };
 }; 
